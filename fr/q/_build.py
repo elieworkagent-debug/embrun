@@ -99,7 +99,7 @@ THEMES = [
         "nav": "Histoire, géographie",
         "short": "Histoire, géographie",
         "title": "Histoire et géographie : les 83 questions du thème 4",
-        "desc": "Les {n} questions du thème 4 (naturalisation) : dates repères, personnages, géographie et culture françaises. Chaque bonne réponse est affichée avec la question.",
+        "desc": "Les {n} questions du thème 4 (naturalisation) : dates repères, personnages, géographie et culture de la France. Bonne réponse affichée sous chaque question.",
         "intro": (
             "C’est le thème le plus fourni de la liste : il porte sur l’histoire de France, son "
             "territoire et son patrimoine culturel. On y trouve les grandes dates et figures — "
@@ -395,7 +395,7 @@ def other_themes(theme: dict) -> str:
 
 def pager(theme: dict) -> str:
     n = theme["n"]
-    out = ['  <section class="sec" aria-label="Autres thèmes">\n    <div class="main" style="padding-left:0">\n      <nav class="pager" aria-label="Navigation entre les thèmes">']
+    out = ['  <section class="sec" aria-label="Autres thèmes">\n    <div class="main">\n      <nav class="pager" aria-label="Navigation entre les thèmes">']
     if n > 1:
         prev = THEMES[n - 2]
         out.append(
@@ -465,9 +465,9 @@ def render_theme_page(theme: dict, qs: list[dict]) -> str:
   <section class="sec article-head" aria-labelledby="titre">
 {rail(items)}
     <div class="main">
-{breadcrumb(theme)}      <h1 id="titre" style="max-width:32ch">{escape(h1)}</h1>
-      <p class="lead" style="margin-top:16px">{escape(theme["intro"])}</p>
-      <div class="actions" style="margin-top:22px">
+{breadcrumb(theme)}      <h1 id="titre">{escape(h1)}</h1>
+      <p class="lead page-lead">{escape(theme["intro"])}</p>
+      <div class="actions page-actions">
         <a class="btn" href="/entrainement.html">Faire le test gratuit de 40 questions</a>
         <a class="btn-ghost" href="/fr/">Voir le pack — 19&nbsp;€</a>
       </div>
@@ -487,10 +487,10 @@ def render_theme_page(theme: dict, qs: list[dict]) -> str:
   <section class="sec" aria-labelledby="h-suite">
     <div class="main">
       <h2 id="h-suite">Continuer</h2>
-      <p class="lead" style="margin-top:12px">S’entraîner au format réel de l’épreuve, puis réviser les {count} questions de ce thème en audio.</p>
-      <div class="callout" style="margin:22px 0 0;max-width:var(--measure)">
+      <p class="lead page-lead">S’entraîner au format réel de l’épreuve, puis réviser les {count} questions de ce thème en audio.</p>
+      <div class="callout q-cta">
         <div>
-          <h3 style="margin:0 0 8px">Les 259 questions, en audio et en examens blancs</h3>
+          <h3>Les 259 questions, en audio et en examens blancs</h3>
           <p>Les 259 questions lues avec leur réponse expliquée, un PDF de 72 pages et cinq examens blancs de 40 questions. 19&nbsp;€ une fois, sans abonnement.</p>
         </div>
         <div class="side">
@@ -498,8 +498,8 @@ def render_theme_page(theme: dict, qs: list[dict]) -> str:
           <a href="/entrainement.html" class="reassure">ou faire le test gratuit de 40 questions</a>
         </div>
       </div>
-      <h3 style="margin:36px 0 12px">À lire aussi</h3>
-{link_list(theme)}      <h3 style="margin:36px 0 12px">Les autres thèmes</h3>
+      <h3 class="q-sub">À lire aussi</h3>
+{link_list(theme)}      <h3 class="q-sub">Les autres thèmes</h3>
 {other_themes(theme)}    </div>
   </section>
 
@@ -531,7 +531,7 @@ def render_index(by_theme: dict[int, list[dict]]) -> str:
         count = totals[t["n"]]
         rows.append(
             "        <div class=\"doc-row\">\n"
-            f"          <h3><a href=\"/fr/q/{t['slug']}/\" style=\"color:inherit\">Thème {t['n']} — {escape(t['target'])}</a></h3>\n"
+            f"          <h3><a href=\"/fr/q/{t['slug']}/\">Thème {t['n']} — {escape(t['target'])}</a></h3>\n"
             f"          <p>{escape(short_desc[t['n']])}</p>\n"
             f"          <span class=\"qv\">{count} questions</span>\n"
             "        </div>"
@@ -581,9 +581,9 @@ def render_index(by_theme: dict[int, list[dict]]) -> str:
   <section class="sec article-head" aria-labelledby="titre">
 {rail(items)}
     <div class="main">
-{breadcrumb(None)}      <h1 id="titre" style="max-width:26ch">Les 259 questions de l’examen civique, par thème</h1>
-      <p class="lead" style="margin-top:16px">{escape(intro)}</p>
-      <div class="actions" style="margin-top:22px">
+{breadcrumb(None)}      <h1 id="titre">Les 259 questions de l’examen civique, par thème</h1>
+      <p class="lead page-lead">{escape(intro)}</p>
+      <div class="actions page-actions">
         <a class="btn" href="/entrainement.html">Faire le test gratuit de 40 questions</a>
         <a class="btn-ghost" href="/fr/">Voir le pack — 19&nbsp;€</a>
       </div>
@@ -593,30 +593,30 @@ def render_index(by_theme: dict[int, list[dict]]) -> str:
   <section class="sec" aria-labelledby="h-themes">
     <div class="main">
       <h2 id="h-themes">Les cinq thèmes</h2>
-      <p class="lead" style="margin-top:12px">Chaque page donne la liste complète de son thème : la question, les quatre propositions, la bonne réponse et l’explication quand la liste en fournit une.</p>
-      <div class="doc" style="margin-top:22px">
+      <p class="lead page-lead">Chaque page donne la liste complète de son thème : la question, les quatre propositions, la bonne réponse et l’explication quand la liste en fournit une.</p>
+      <div class="doc q-themes">
 {chr(10).join(rows)}
       </div>
-      <p class="small" style="margin-top:16px">Total : <strong>{TOTAL} questions</strong>. Le thème 4 est le plus fourni de la liste ; il en compte {totals[4]}.</p>
-      <nav aria-label="Accès direct aux thèmes" style="margin-top:18px;font-size:.95rem;line-height:1.8">{theme_links}</nav>
+      <p class="small q-total">Total : <strong>{TOTAL} questions</strong>. Le thème 4 est le plus fourni de la liste ; il en compte {totals[4]}.</p>
+      <nav class="q-shortcuts" aria-label="Accès direct aux thèmes">{theme_links}</nav>
     </div>
   </section>
 
   <section class="sec" aria-labelledby="h-faq">
     <div class="main">
       <h2 id="h-faq">Questions fréquentes</h2>
-      <div class="faq" style="margin-top:18px">
+      <div class="faq q-faq">
 {faq_html}
       </div>
-      <h3 style="margin:36px 0 12px">Pour aller plus loin</h3>
+      <h3 class="q-sub">Pour aller plus loin</h3>
       <ul class="read-next">
         <li><a href="/blog/comment-se-passe-examen-civique/"><span class="t">Comment se passe l’examen civique : 40 QCM en 45 min</span><span class="k">Guide</span></a></li>
         <li><a href="/blog/12-mises-en-situation/"><span class="t">12 mises en situation à l’examen civique : le format</span><span class="k">Guide</span></a></li>
         <li><a href="/blog/resultat-examen-civique-delai/"><span class="t">Résultat de l’examen civique : délai et validité</span><span class="k">Démarches</span></a></li>
       </ul>
-      <div class="callout" style="margin:32px 0 0;max-width:var(--measure)">
+      <div class="callout q-cta">
         <div>
-          <h3 style="margin:0 0 8px">Les 259 questions, en audio et en examens blancs</h3>
+          <h3>Les 259 questions, en audio et en examens blancs</h3>
           <p>Les 259 questions lues avec leur réponse expliquée, un PDF de 72 pages et cinq examens blancs de 40 questions. 19&nbsp;€ une fois, sans abonnement.</p>
         </div>
         <div class="side">

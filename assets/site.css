@@ -693,3 +693,22 @@ a.btn,a.btn:hover,a.btn-ghost,a.btnlink,a.langlink,a.brand{-webkit-text-decorati
   .q-list summary::after{display:none}
   .q-list details > .qbody{display:block!important}
 }
+
+/* Pages de thèmes fr/q/ : rythme des blocs. Les espacements des blocs communs
+   sont posés ici plutôt qu'en attribut style. */
+.q-list details > summary > .qq{display:block;min-width:0;flex:1 1 auto;overflow-wrap:anywhere}
+.q-list .qbody > ol{margin:0;padding:0;list-style:none}
+.q-list .qbody > ol > li{padding-left:0;margin:0}
+.q-list .qbody > ol > li::before{content:none}
+.q-list .qbody > ol > li.opt{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start}
+.page-lead{margin-top:clamp(12px,1.8vw,16px);max-width:62ch}
+.page-actions{margin-top:clamp(18px,2.6vw,24px)}
+.q-cta{margin-top:clamp(24px,3.5vw,32px);max-width:var(--measure)}
+.q-cta h3{margin:0 0 8px}
+.q-sub{font-size:1.125rem;margin:clamp(30px,4vw,38px) 0 10px}
+.q-themes{margin-top:clamp(18px,2.5vw,22px)}
+.q-themes h3 a{color:var(--ink);text-decoration:none}
+.q-themes h3 a:hover{text-decoration:underline;text-underline-offset:3px}
+.q-total{margin-top:16px}
+.q-shortcuts{margin-top:16px;font-size:.95rem;line-height:2}
+.q-faq{margin-top:18px}
