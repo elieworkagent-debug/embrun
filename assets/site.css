@@ -179,3 +179,23 @@ section{padding:clamp(38px,5.5vw,66px) 0}
   .listen{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ---------------------------------------------- bandeau de faits officiels */
+.factsband{border-top:1px solid var(--ink);border-bottom:1px solid var(--line);background:var(--paper)}
+.factsband .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:0 22px}
+.fact{padding:20px 18px 18px;border-right:1px solid var(--line-2)}
+.fact:last-child{border-right:0}
+.fact b{display:block;font-size:clamp(1.4rem,2.6vw,1.9rem);letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
+.fact span{display:block;margin-top:6px;font-size:.82rem;color:var(--ink-3);line-height:1.35}
+@media (max-width:760px){
+  .factsband .wrap{grid-template-columns:1fr 1fr}
+  .fact{border-bottom:1px solid var(--line-2)}
+  .fact:nth-child(2n){border-right:0}
+}
+
+/* ---------------------------------------------- score du mini-examen */
+.scorebox{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  margin-top:18px;border:1px solid var(--ink);padding:18px 20px;background:var(--paper)}
+.scorebox b{font-size:1.7rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-right:10px}
+.scorebox span{font-size:.94rem;color:var(--ink-2);max-width:62ch}
+.scorebox .btn{padding:11px 18px;font-size:.92rem}
