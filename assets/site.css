@@ -329,7 +329,7 @@ a.btn,a.btn:hover,a.btn-ghost,a.btnlink,a.langlink,a.brand{-webkit-text-decorati
   linear-gradient(45deg,transparent 45%,var(--red) 45% 55%,transparent 55%),
   linear-gradient(-45deg,transparent 45%,var(--red) 45% 55%,transparent 55%)}
 .sw-x{border:1.5px dashed var(--ink-soft)}
-.sw-pass{background:var(--slate);border-left:3px solid var(--pass);border-right:3px solid var(--pass);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.sw-pass{background:transparent;border:0;border-top:2px dashed var(--pass);height:2px;align-self:center}
 .sheet-score{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:14px 0 0;padding-top:12px;border-top:1px solid var(--ink)}
 .sheet-score .big{font-size:2rem;font-weight:700;letter-spacing:-0.03em;line-height:1;font-variant-numeric:tabular-nums}
 .sheet-score .big small{font-size:.95rem;font-weight:500;color:var(--ink-soft);letter-spacing:0}
