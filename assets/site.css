@@ -83,7 +83,7 @@ p{margin:0 0 1em}
 .cell{aspect-ratio:1;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;
   font-size:.62rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
 .cell.on{background:var(--ink);border-color:var(--ink);color:#fff}
-.cell.x{background:#fbeeec;border-color:#d8b7b2;color:var(--warn);font-weight:600}
+.cell.x{background:#fbeeec;border-color:var(--warn);color:var(--warn);font-weight:600;text-decoration:line-through}
 .cell.seuil{box-shadow:inset 0 0 0 2px var(--ok)}
 .grade .legend{display:flex;gap:18px;margin-top:12px;font-size:.78rem;color:var(--ink-3);flex-wrap:wrap}
 .grade .legend span{display:inline-flex;align-items:center;gap:7px}
@@ -113,7 +113,7 @@ section{padding:clamp(38px,5.5vw,66px) 0}
 /* audio */
 .listen{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;
   border:1px solid var(--line);background:var(--paper-2);padding:22px}
-.listen .label{font-size:.86rem;color:var(--ink-2);max-width:18ch}
+.listen .label{font-size:.88rem;color:var(--ink-2);max-width:20ch;line-height:1.45}
 .listen .label b{display:block;color:var(--ink);font-size:1rem}
 .listen audio{width:100%}
 
