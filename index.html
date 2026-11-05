@@ -1,55 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Embrun.store — study packs for citizenship and civics exams</title>
-<meta name="description" content="Audio-first study packs for the French civic exam (examen civique 2026) and the US civics test (2025 format, 128 questions). Offline MP3, printable PDF, timed practice tests.">
+<title>Embrun — study packs for the civics and citizenship exams</title>
+<meta name="description" content="Audio packs, printable PDFs and practice tests for the French examen civique and the 2025 US civics test. Instant download, no app.">
 <link rel="canonical" href="https://embrun.store/">
-<style>
-  :root{--ink:#12161c;--mut:#5a6772;--line:#e3e8ee;--acc:#1f6feb;--bg:#fbfcfd}
-  *{box-sizing:border-box}
-  body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-  .wrap{max-width:860px;margin:0 auto;padding:56px 24px 72px}
-  h1{font-size:2rem;line-height:1.2;margin:0 0 12px;letter-spacing:-.02em}
-  .sub{color:var(--mut);margin:0 0 40px;font-size:1.05rem}
-  .cards{display:grid;gap:18px;grid-template-columns:1fr}
-  @media(min-width:700px){.cards{grid-template-columns:1fr 1fr}}
-  .card{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:14px;padding:22px;background:#fff;transition:.15s}
-  .card:hover{border-color:var(--acc);transform:translateY(-2px)}
-  .flag{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
-  .card h2{font-size:1.15rem;margin:8px 0 6px}
-  .card p{color:var(--mut);font-size:.94rem;margin:0}
-  .price{margin-top:14px;font-weight:600}
-  footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--mut);font-size:.86rem}
-  a.mail{color:var(--acc)}
-</style>
+<meta property="og:title" content="Embrun — study packs for civics exams">
+<meta property="og:description" content="French examen civique 2026 and the 2025 US civics test. Audio, PDF, practice tests.">
+<meta property="og:url" content="https://embrun.store/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
-<div class="wrap">
-  <h1>Study packs for citizenship &amp; civics exams</h1>
-  <p class="sub">Audio-first revision, printable PDFs, timed practice tests. No subscription, no app to install: the files are yours.</p>
+<body class="hub">
 
-  <div class="cards">
-    <a class="card" href="/fr/">
-      <div class="flag">France · en français</div>
-      <h2>Examen civique 2026</h2>
-      <p>259 questions officielles en audio (2 h 24), PDF de 72 pages, 5 examens blancs corrigés.</p>
-      <div class="price">19 €</div>
-    </a>
-    <a class="card" href="/us/">
-      <div class="flag">United States · English</div>
-      <h2>US Civics Test 2025 format</h2>
-      <p>All 128 USCIS questions in audio, printable PDF, timed practice tests with the 12-of-20 passing rule.</p>
-      <div class="price">$19</div>
-    </a>
+<header class="hdr">
+  <div class="wrap">
+    <a class="wordmark" href="/">embrun<span>.store</span></a>
+    <div class="ctx">Two exams, two packs</div>
+    <div class="right">
+      <a class="lang" href="/fr/" hreflang="fr" lang="fr">Français</a>
+      <a class="buy-link" href="#packs">Choisir un pack</a>
+    </div>
   </div>
+</header>
 
-  <footer>
-    Questions or licensing: <a class="mail" href="mailto:eliework@embrun.store">eliework@embrun.store</a><br>
-    Payments processed by Creem. Digital delivery by download link, immediately after payment.<br>
-    <a class="mail" href="/privacy.html">Privacy Policy</a> &middot; <a class="mail" href="/terms.html">Terms of Service</a>
-  </footer>
-</div>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <h1>Two citizenship exams. Both are mostly memory.</h1>
+    <p class="lede" style="margin-top:20px">One pack per exam: every official question read aloud with its answer, a printable summary, and practice runs in the real format. You listen on your commute, you print the summary the night before.</p>
+  </div>
+</section>
+
+<section style="padding-top:0" id="packs">
+  <div class="wrap">
+    <div class="pick">
+      <a href="/fr/">
+        <div class="k">France · examen civique 2026</div>
+        <h3>259 questions en audio</h3>
+        <p>2 h 24 d’écoute, PDF de 72 pages, 5 examens blancs de 40 questions. 19 €.</p>
+      </a>
+      <a href="/us/">
+        <div class="k">United States · civics test 2025</div>
+        <h3>128 questions in audio</h3>
+        <p>All 128 official questions, printable PDF, practice tests. 20 asked, 12 to pass. $19.</p>
+      </a>
+    </div>
+
+    <div class="listen" style="margin-top:26px">
+      <div class="label"><b>Hear the format</b>One question, one answer, no filler</div>
+      <audio controls preload="metadata" src="/us/assets/excerpt.mp3">
+        Your browser cannot play this audio. <a href="/us/assets/excerpt.mp3">Download the sample (MP3)</a>.
+      </audio>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="spec">
+      <div class="row"><span class="t">You get files, not an account</span><span class="q">MP3 · PDF</span>
+        <span class="d">No login, no app, no expiry. Download once, keep them, copy them to your phone or car.</span></div>
+      <div class="row"><span class="t">Written for the real interview format</span><span class="q">40 / 20 q.</span>
+        <span class="d">The French exam asks 40 questions in 45 minutes; the US officer asks up to 20 and needs 12 correct. Both packs practise exactly that.</span></div>
+      <div class="row"><span class="t">A free sample before you pay</span><span class="q">$0</span>
+        <span class="d">Every page has a listen link. Same voice, same recording as the paid pack.</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div><b>Embrun</b> · <a href="mailto:eliework@embrun.store">eliework@embrun.store</a></div>
+    <div class="links">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/fr/">Édition française</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:14px">
+    <span class="meta">Payments processed by Creem, merchant of record.</span>
+  </div>
+</footer>
+
 </body>
 </html>
