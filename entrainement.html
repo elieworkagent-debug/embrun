@@ -428,10 +428,9 @@ function startExam(idx) {
   const st = { cur: 0, answers: {}, left: 45 * 60, tick: null, sheetOpen: false };
   const total = qs.length;
 
+  const fmt = s => String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
   const timerHTML = () => `<span class="clock" id="t">${fmt(st.left)}</span>`;
   setBar(`<small>Examen blanc ${idx + 1}</small>Simulation`, timerHTML());
-
-  const fmt = s => String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
 
   const answered = () => Object.keys(st.answers).length;
 

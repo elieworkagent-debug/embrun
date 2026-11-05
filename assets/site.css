@@ -522,6 +522,53 @@ a.btn,a.btn:hover,a.btn-ghost,a.btnlink,a.langlink,a.brand{-webkit-text-decorati
 .read-next .t{font-weight:600;font-size:1.02rem;line-height:1.4}
 .read-next .k{font-size:var(--f-s);color:var(--ink-soft);white-space:nowrap}
 
+/* Liste des questions d'un thème (fr/q/) : chaque question est un <details>,
+   la bonne réponse est écrite en clair dans le résumé et rappelée en couleur
+   dans la correction. Fonctionne sans JavaScript ; ouverte à l'impression. */
+.q-list{border-top:2px solid var(--ink);max-width:var(--measure);margin:0}
+.q-list details{border-bottom:1px solid var(--rule)}
+.q-list summary{
+  cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:flex-start;
+  padding:15px 0;font-weight:600;font-size:1.0625rem;line-height:1.4;
+}
+.q-list summary::-webkit-details-marker{display:none}
+.q-list summary::after{content:"+";font-weight:400;color:var(--ink-soft);font-size:1.3rem;line-height:1;flex:none}
+.q-list details[open] summary::after{content:"\2212"}
+.q-list .qq{display:block;min-width:0}
+.q-list .ans{
+  display:block;margin-top:4px;font-weight:500;font-size:.98rem;line-height:1.45;
+  color:var(--pass);overflow-wrap:anywhere;
+}
+.q-list .ans::before{content:"Réponse\00a0: ";font-weight:600}
+.q-list .qnum{
+  display:block;font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.02em;
+  color:var(--ink-soft);font-variant-numeric:tabular-nums;margin-bottom:2px;
+}
+.q-list .qbody{padding:0 0 18px}
+.q-list .opt{
+  list-style:none;display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;
+  padding:8px 0;border-top:1px solid var(--rule);margin:0;
+  font-family:var(--serif);font-size:1.05rem;line-height:1.5;
+}
+.q-list .opt .l{font-family:var(--sans);font-weight:600;font-size:.85rem;line-height:1.75;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.q-list .opt.ok{background:#f3f8f5;box-shadow:inset 3px 0 0 var(--pass);padding-left:10px;padding-right:8px}
+.q-list .opt.ok .l{color:var(--pass)}
+.q-list .opt .vc{display:block;font-family:var(--sans);font-size:.78rem;font-weight:600;color:var(--pass)}
+.q-list .why{
+  margin:14px 0 0;font-family:var(--serif);font-size:1.0625rem;line-height:1.62;color:var(--ink-soft);
+  max-width:64ch;overflow-wrap:anywhere;
+}
+.q-list .why b{font-family:var(--sans);font-weight:600;color:var(--ink);font-size:.92rem}
+
+/* Navigation entre thèmes. */
+.pager{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;margin:clamp(28px,4vw,40px) 0 0;border-top:2px solid var(--ink);max-width:var(--measure)}
+.pager a{display:flex;flex-direction:column;gap:2px;padding:14px 0;text-decoration:none;color:var(--ink);min-width:0}
+.pager a:hover .t{text-decoration:underline;text-underline-offset:3px}
+.pager .k{font-size:var(--f-s);color:var(--ink-soft)}
+.pager .t{font-weight:600;font-size:1.02rem;line-height:1.35;overflow-wrap:anywhere}
+.pager .next{margin-left:auto;text-align:right}
+.pager .next.full{grid-column:1/-1}
+
 /* Index du blog */
 .posts{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink);max-width:var(--measure)}
 .posts li{margin:0;border-bottom:1px solid var(--rule);padding:0}
@@ -643,4 +690,6 @@ a.btn,a.btn:hover,a.btn-ghost,a.btnlink,a.langlink,a.brand{-webkit-text-decorati
   .qcard summary::after{display:none}
   .question .qcard .answer{display:block!important}
   .question .qcard label.qreveal,.question .qcard label.masquer{display:none!important}
+  .q-list summary::after{display:none}
+  .q-list details > .qbody{display:block!important}
 }
