@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://skeeder1.github.io/civics-128/sitemap.xml

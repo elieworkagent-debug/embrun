@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://skeeder1.github.io/examen-civique-audio/sitemap.xml
