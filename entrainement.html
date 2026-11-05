@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test gratuit — examen civique 2026 : 40 questions chronométrées</title>
+<meta name="description" content="Faites un examen blanc de l’examen civique 2026 : 40 questions, 45 minutes, 32 pour réussir. Gratuit, sans compte, correction et explications à la fin.">
+<link rel="canonical" href="https://embrun.store/entrainement.html">
+<style>
+:root{--ink:#0f1b2d;--ink2:#33425a;--ink3:#67748a;--paper:#fff;--p2:#eef2f5;--line:#c8d2dc;--ok:#0e6b4f;--bad:#a8281f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:20px 18px 60px}
+h1{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 6px}
+h2{font-size:1.15rem;letter-spacing:-.01em;margin:0 0 10px}
+p{margin:0 0 12px}
+.muted{color:var(--ink3);font-size:.88rem}
+.card{border:1px solid var(--line);padding:16px;margin:0 0 12px;background:var(--paper)}
+.card:hover{border-color:var(--ink)}
+button{font:inherit;cursor:pointer;border-radius:2px}
+.btn{display:inline-block;background:#141414;color:#fff;border:1px solid #141414;padding:12px 18px;font-weight:600;width:100%;text-align:center}
+.btn:hover{background:#000}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+header.bar{position:sticky;top:0;background:var(--paper);border-bottom:1px solid var(--line);padding:10px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.9rem;z-index:5}
+.timer{font-variant-numeric:tabular-nums;font-weight:600}
+.timer.low{color:var(--bad)}
+.q{font-size:1.12rem;margin:14px 0 14px;line-height:1.45}
+.opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);padding:12px;margin:0 0 8px;font-size:1rem}
+.opt:hover{border-color:var(--ink)}
+.opt .k{font-weight:700;min-width:1.4em}
+.opt.sel{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.opt.right{background:#e7f3ee;border-color:var(--ok)}
+.opt.wrong{background:#fbeceb;border-color:var(--bad)}
+.fb{margin:10px 0 0;font-size:.94rem}
+.fb.good{color:var(--ok)}
+.fb.bad{color:var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:12px 0}
+.pill{border:1px solid var(--line);background:var(--paper);padding:8px 0;font-variant-numeric:tabular-nums;font-size:.9rem}
+.pill.done{background:var(--p2)}
+.pill.cur{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.score{font-size:2.4rem;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin:6px 0}
+.pass{color:var(--ok)}.fail{color:var(--bad)}
+.hidden{display:none}
+.row{display:flex;gap:10px}
+.row>*{flex:1}
+header.bar b{letter-spacing:-.02em}
+.tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const DATA = {"public":true,"themes":[{"n":1,"title":"Principes et valeurs de la République"},{"n":2,"title":"Système institutionnel et politique"},{"n":3,"title":"Droits et devoirs"},{"n":4,"title":"Histoire, géographie et culture"},{"n":5,"title":"Vivre dans la société française"}],"questions":[{"id":"1-5","theme":1,"question":"La liberté d’association est :","answer":"Une liberté fondamentale (loi de 1901)","wrong":["Réservée aux citoyens français","Soumise à l’autorisation du maire","Interdite aux associations religieuses"],"explication":"Chacun peut créer une association ou y adhérer, dans le respect des lois de la République."},{"id":"1-7","theme":1,"question":"Lequel de ces prénoms évoque un symbole de la République ?","answer":"Marianne","wrong":["Jeanne","Louise","Catherine"],"explication":""},{"id":"1-8","theme":1,"question":"Lequel de ces symboles représente la République française ?","answer":"Marianne","wrong":["La fleur de lys","L’aigle impérial","La couronne royale"],"explication":"Autres symboles : le drapeau tricolore, La Marseillaise, la devise, le 14 juillet."},{"id":"1-11","theme":1,"question":"Peut-on brûler publiquement un drapeau français ?","answer":"Non, c’est puni par la loi","wrong":["Oui, c’est la liberté d’expression","Oui, mais seulement le 14 juillet","Oui, si le drapeau vous appartient"],"explication":"L’outrage au drapeau tricolore ou à l’hymne national est puni par le Code pénal, notamment lors d’une manifestation publique."},{"id":"1-14","theme":1,"question":"Que porte Marianne sur la tête ?","answer":"Un bonnet phrygien","wrong":["Une couronne royale","Un casque militaire","Un chapeau de paille"],"explication":""},{"id":"1-18","theme":1,"question":"Qu’est-ce que la liberté d’association ?","answer":"Le droit de créer une association ou d’y adhérer","wrong":["L’obligation d’adhérer à un syndicat","Le droit de se réunir sans respecter la loi","Un droit réservé aux partis politiques"],"explication":"Une association qui ne respecte pas les principes républicains peut être dissoute par l’État."},{"id":"1-23","theme":1,"question":"Une personne peut-elle changer librement de religion en France ?","answer":"Oui, librement","wrong":["Non, c’est interdit","Oui, avec l’accord du maire","Oui, mais une seule fois dans sa vie"],"explication":"La laïcité garantit la liberté de conscience : avoir une religion, en changer ou ne plus en avoir."},{"id":"1-26","theme":1,"question":"En France, il est possible pour l’État de financer :","answer":"La restauration d’un monument religieux classé","wrong":["Les cérémonies d’une religion particulière","L’achat d’objets de culte pour une église","La promotion d’une religion dans les écoles"],"explication":"Mais pas la construction d’un lieu de culte ni le salaire d’un religieux (exceptions en Alsace et en Moselle)."},{"id":"1-28","theme":1,"question":"Que dit la loi de 1905 ?","answer":"Les Églises et l’État sont séparés","wrong":["Le catholicisme est la religion de l’État","Les religions sont interdites dans la rue","L’État paie les responsables religieux"],"explication":"La République garantit la liberté de conscience et le libre exercice des cultes, mais ne reconnaît, ne salarie ni ne subventionne aucun culte."},{"id":"1-30","theme":1,"question":"Quel jour célèbre-t-on officiellement la laïcité en France ?","answer":"Le 9 décembre","wrong":["Le 14 juillet","Le 1er mai","Le 11 novembre"],"explication":"Date de la loi de 1905."},{"id":"1-34","theme":1,"question":"Quelle institution française doit rester neutre en matière de religion ?","answer":"L’école publique","wrong":["Une association religieuse","Une entreprise privée","Un parti politique"],"explication":""},{"id":"2-13","theme":2,"question":"En France, est-ce obligatoire de voter ?","answer":"Non, mais c’est un devoir civique","wrong":["Oui, sinon on paie une amende","Oui, après 30 ans","Non, c’est réservé aux hommes"],"explication":""},{"id":"2-16","theme":2,"question":"Qui vote les lois ?","answer":"Le Parlement","wrong":["Le Président seul","Le préfet","Le Conseil constitutionnel"],"explication":""},{"id":"2-24","theme":2,"question":"Qui dirige l’action du gouvernement ?","answer":"Le Premier ministre","wrong":["Le président du Sénat","Le président de l’Assemblée nationale","Le Conseil d’État"],"explication":""},{"id":"2-32","theme":2,"question":"Qui assure l’intérim du président de la République en cas de décès ?","answer":"Le président du Sénat","wrong":["Le Premier ministre","Le président de l’Assemblée nationale","Le ministre de l’Intérieur"],"explication":"Jusqu’à l’élection organisée en urgence (cas de Georges Pompidou, mort en 1974)."},{"id":"2-43","theme":2,"question":"Qui a composé l’hymne de l’Union européenne ?","answer":"Ludwig van Beethoven","wrong":["Wolfgang Amadeus Mozart","Claude Debussy","Giuseppe Verdi"],"explication":"L’Ode à la joie, extrait de sa Neuvième symphonie."},{"id":"2-44","theme":2,"question":"Quand est célébrée la journée de l’Europe ?","answer":"Le 9 mai","wrong":["Le 14 juillet","Le 1er janvier","Le 11 novembre"],"explication":"En souvenir de la déclaration de Robert Schuman du 9 mai 1950."},{"id":"3-3","theme":3,"question":"Laquelle de ces citations est inscrite dans la Déclaration des Droits de l’Homme et du Citoyen de 1789 ?","answer":"« Les hommes naissent et demeurent libres et égaux en droits »","wrong":["« Tous les citoyens doivent pratiquer une religion »","« Le roi est la source de toute souveraineté »","« Le travail, la famille et la patrie sont sacrés »"],"explication":"Article 1er. Autre citation : « La liberté consiste à pouvoir faire tout ce qui ne nuit pas à autrui » (article 4)."},{"id":"3-5","theme":3,"question":"Que dit l’article 1er de la Constitution française ?","answer":"La France est une République indivisible, laïque, démocratique et sociale","wrong":["La France est une monarchie constitutionnelle et parlementaire","Le catholicisme est la religion officielle de la France","La France est un État fédéral composé de régions"],"explication":""},{"id":"3-12","theme":3,"question":"Quel texte affirme que tous les hommes naissent libres et égaux en droits ?","answer":"La Déclaration des droits de l’homme et du citoyen de 1789","wrong":["Le Code civil de Napoléon (1804)","La loi de séparation des Églises et de l’État","Le traité de Rome instituant la CEE"],"explication":""},{"id":"3-14","theme":3,"question":"Qu’est-ce que la liberté d’expression ?","answer":"Exprimer ses opinions dans les limites de la loi","wrong":["Insulter les personnes avec qui on n’est pas d’accord","Diffuser des appels à la violence en ligne","Imposer ses idées aux autres par la force"],"explication":"Interdits : injures, diffamation, appels à la haine ou à la violence."},{"id":"3-15","theme":3,"question":"Suite à une interpellation par la police, il est possible de :","answer":"Être assisté par un avocat","wrong":["Quitter librement le commissariat","Choisir le policier qui l’interroge","Exiger d’être jugé le jour même"],"explication":"La personne est informée des motifs de son arrestation et de ses droits."},{"id":"3-23","theme":3,"question":"Est-il obligatoire de porter secours à une personne en danger ?","answer":"Oui, si on peut le faire sans danger pour soi","wrong":["Non, c’est uniquement le rôle de la police","Non, aider est toujours facultatif","Oui, même s’il faut risquer sa propre vie"],"explication":"La non-assistance à personne en danger est un délit."},{"id":"3-24","theme":3,"question":"Être juré d’assises est :","answer":"Un devoir civique","wrong":["Un métier rémunéré","Réservé aux avocats","Une activité bénévole facultative"],"explication":""},{"id":"3-29","theme":3,"question":"Pour quel motif peut-on limiter la liberté d’expression ?","answer":"Pour empêcher l’incitation à la haine","wrong":["Pour interdire la critique du Gouvernement","Pour protéger une religion du blasphème","Pour interdire les opinions minoritaires"],"explication":""},{"id":"3-30","theme":3,"question":"Que doit faire un citoyen s’il est appelé à être juré dans un procès d’assises ?","answer":"Se présenter et participer au procès","wrong":["Refuser sans justification","Envoyer un proche à sa place","Choisir le procès qui l’intéresse"],"explication":"Seul un motif grave permet d’être dispensé. Un refus sans motif est puni d’une amende pouvant aller jusqu’à 3 750 €."},{"id":"3-32","theme":3,"question":"Quel est l’un des devoirs principaux d’un citoyen français ?","answer":"Respecter les lois","wrong":["Adhérer à un parti","Pratiquer une religion","Posséder un logement"],"explication":"Aussi : payer ses impôts, participer à la défense nationale, être juré si tiré au sort, voter (devoir civique)."},{"id":"3-36","theme":3,"question":"Qui peut être appelé à faire partie d’un jury d’assises en France ?","answer":"Les citoyens français tirés au sort","wrong":["Les avocats volontaires","Les policiers","Les étrangers résidant en France"],"explication":""},{"id":"4-3","theme":4,"question":"Quel est l’objectif des lois scolaires de la IIIe République ?","answer":"Rendre l’école gratuite, laïque et obligatoire","wrong":["Créer les premières universités françaises","Rendre l’école payante pour toutes les familles","Imposer l’enseignement religieux à l’école"],"explication":"Lois de Jules Ferry."},{"id":"4-14","theme":4,"question":"De quand date l’appel à la résistance du général de Gaulle ?","answer":"Du 18 juin 1940","wrong":["Du 14 juillet 1789","Du 8 mai 1945","Du 11 novembre 1918"],"explication":""},{"id":"4-23","theme":4,"question":"Que célèbre-t-on le 8 mai ?","answer":"La fin de la Seconde Guerre mondiale en Europe","wrong":["La prise de la Bastille en 1789","La fête du Travail et des travailleurs","L’armistice de la Première Guerre mondiale"],"explication":""},{"id":"4-26","theme":4,"question":"Le 11 novembre est un jour férié. À quoi correspond cette date ?","answer":"L’armistice de 1918","wrong":["La fin de la Seconde Guerre mondiale","La fête nationale","La prise de la Bastille"],"explication":"Hommage à tous les morts pour la France."},{"id":"4-28","theme":4,"question":"Qui a aboli l’esclavage en France ?","answer":"Victor Schœlcher","wrong":["Napoléon Ier","Louis XIV","Jules Ferry"],"explication":""},{"id":"4-60","theme":4,"question":"Quel musée est situé à Paris ?","answer":"Le musée du Louvre","wrong":["Le musée du Prado","Le British Museum","Le Rijksmuseum"],"explication":""},{"id":"4-69","theme":4,"question":"Quelle mer ou océan borde la France métropolitaine ?","answer":"L’océan Atlantique","wrong":["L’océan Pacifique","La mer Baltique","La mer Noire"],"explication":""},{"id":"4-70","theme":4,"question":"Quelle mer se situe entre la France et l’Angleterre ?","answer":"La Manche","wrong":["La mer Méditerranée","La mer Baltique","La mer Noire"],"explication":""},{"id":"5-6","theme":5,"question":"Dans quel cas faut-il déclarer son enfant au service d’état civil ?","answer":"À sa naissance","wrong":["À son entrée à l’école","À ses 18 ans","À son premier anniversaire"],"explication":"Les mariages et les décès doivent aussi être déclarés."},{"id":"5-11","theme":5,"question":"En cas de divorce, qui exerce l’autorité parentale ?","answer":"Les deux parents","wrong":["La mère uniquement","Le père uniquement","Les grands-parents"],"explication":""},{"id":"5-17","theme":5,"question":"À quoi sert la carte Vitale ?","answer":"À prouver ses droits à l’Assurance maladie","wrong":["À voter aux élections","À voyager en train à prix réduit","À ouvrir un compte bancaire"],"explication":""},{"id":"5-19","theme":5,"question":"Qu’est-ce que le tiers payant ?","answer":"Ne pas avancer la part remboursée","wrong":["Payer deux fois la consultation","Faire payer quelqu’un d’autre","Être soigné sans papiers d’identité"],"explication":""}],"exams":[["1-28","1-7","1-26","1-23","1-5","1-30","1-11","1-18","1-14","1-34","1-8","2-43","2-16","2-24","2-44","2-32","2-13","3-24","3-15","3-30","3-12","3-3","3-32","3-5","3-36","3-23","3-29","3-14","4-26","4-3","4-69","4-60","4-28","4-70","4-23","4-14","5-17","5-11","5-19","5-6"]]};
+const $ = s => document.querySelector(s);
+const LS = "embrun_quiz_v1";
+let state = JSON.parse(localStorage.getItem(LS) || '{"best":{},"seen":{}}');
+const save = () => localStorage.setItem(LS, JSON.stringify(state));
+const byId = Object.fromEntries(DATA.questions.map(q => [q.id, q]));
+const LETTERS = ["A","B","C","D"];
+const shuffle = (a, seed) => {
+  let x = seed;
+  const r = () => (x = (x * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+};
+const optsOf = q => shuffle([...q.wrong, q.answer], [...q.id].reduce((s,c)=>s+c.charCodeAt(0),7));
+
+/* ---------- écrans ---------- */
+function home() {
+  const isPub = !!DATA.public;
+  const title = isPub ? "Test gratuit — 40 questions" : "Entraînement à l’examen civique";
+  const intro = isPub
+    ? "Un examen blanc complet dans les conditions réelles : 40 questions, 45 minutes, 32 pour réussir. Sans compte, sans email, illimité. Les corrigés et les explications s’affichent à la fin."
+    : "259 questions officielles (liste du 12 décembre 2025) et 5 examens blancs au format réel : 40 questions, 45 minutes, 32 pour réussir. Fonctionne hors ligne, sans compte.";
+  const ex = DATA.exams.map((e, i) => {
+    const best = state.best["ex" + i];
+    return `<button class="card" onclick="startExam(${i})" style="width:100%;text-align:left">
+      <div class="tag">Examen blanc ${i + 1} · 40 questions · 45 min</div>
+      <div style="font-weight:600;margin-top:4px">${best ? "Meilleur score : " + best + "/40" : "Conditions réelles"}</div></button>`;
+  }).join("");
+  const th = DATA.themes.map(x => {
+    const n = DATA.questions.filter(q => q.theme === x.n).length;
+    if (!n) return "";
+    return `<button class="card" onclick="startTheme(${x.n})" style="width:100%;text-align:left">
+      <div class="tag">Thème ${x.n} · ${n} questions</div><div style="font-weight:600;margin-top:4px">${x.title}</div></button>`;
+  }).join("");
+  const themesBlock = isPub ? "" : `<h2 style="margin-top:22px">Réviser par thème</h2>${th}`;
+  const footer = isPub
+    ? `<p class="muted" style="margin-top:18px">Ce test gratuit contient 40 questions. Le pack complet : 259 questions, 5 examens blancs, l’audio des 259 questions et le PDF.</p>`
+    : `<p class="muted" style="margin-top:18px">Vos scores sont enregistrés dans ce navigateur uniquement. Aucun serveur, aucune donnée envoyée.</p>`;
+  $("#app").innerHTML = `<div class="wrap">
+    <h1>${title}</h1>
+    <p class="muted">${intro}</p>
+    <h2 style="margin-top:22px">Examens blancs</h2>${ex}
+    ${themesBlock}
+    ${footer}
+  </div>`;
+}
+
+function startTheme(n) {
+  const qs = shuffle(DATA.questions.filter(q => q.theme === n), Date.now() & 0xffff);
+  revision(qs, `Thème ${n}`);
+}
+
+function startExam(i) {
+  const ids = DATA.exams[i];
+  const qs = ids.map(id => byId[id]).filter(Boolean);
+  exam(qs, i);
+}
+
+/* ---------- mode révision ---------- */
+function revision(qs, title, i = 0, score = 0) {
+  if (i >= qs.length) {
+    $("#app").innerHTML = `<div class="wrap"><h1>${title} — terminé</h1>
+      <div class="score ${score/qs.length>=.8?"pass":"fail"}">${score}/${qs.length}</div>
+      <p class="muted">Seuil de l’examen : 32 sur 40, soit 80 %.</p>
+      <button class="btn" onclick="home()" style="margin-top:16px">Revenir à l’accueil</button></div>`;
+    return;
+  }
+  const q = qs[i], opts = optsOf(q);
+  const letters = LETTERS;
+  $("#app").innerHTML = `<header class="bar"><span><b>${title}</b></span><span>${i + 1} / ${qs.length}</span></header>
+    <div class="wrap">
+      <div class="tag">Question ${i + 1}</div>
+      <div class="q">${q.question}</div>
+      <div id="opts">${opts.map((o, k) => `<button class="opt" data-v="${k}"><span class="k">${letters[k]}</span><span>${o}</span></button>`).join("")}</div>
+      <div id="fb" class="fb"></div>
+      <button id="next" class="btn hidden" style="margin-top:14px">Question suivante</button>
+    </div>`;
+  const good = opts.indexOf(q.answer);
+  $("#opts").addEventListener("click", ev => {
+    const b = ev.target.closest(".opt"); if (!b || $("#opts").dataset.done) return;
+    $("#opts").dataset.done = "1";
+    const k = +b.dataset.v;
+    [...document.querySelectorAll(".opt")].forEach(x => {
+      const kk = +x.dataset.v;
+      if (kk === good) x.classList.add("right");
+      if (kk === k && k !== good) x.classList.add("wrong");
+    });
+    const ok = k === good;
+    $("#fb").className = "fb " + (ok ? "good" : "bad");
+    $("#fb").textContent = (ok ? "Correct. " : "Réponse exacte : " + letters[good] + ". ") + (q.explication || "");
+    $("#next").classList.remove("hidden");
+  });
+  $("#next").onclick = () => revision(qs, title, i + 1, score + ($("#fb").classList.contains("good") ? 1 : 0));
+}
+
+/* ---------- mode examen ---------- */
+function exam(qs, idx) {
+  let cur = 0, answers = {}, left = 45 * 60, tick = null;
+  $("#app").innerHTML = `<header class="bar"><span><b>Examen blanc ${idx + 1}</b></span>
+      <span class="timer" id="t">45:00</span></header>
+    <div class="wrap">
+      <div class="grid" id="grid"></div>
+      <div class="tag" id="qnum"></div>
+      <div class="q" id="qtext"></div>
+      <div id="opts"></div>
+      <div class="row" style="margin-top:14px">
+        <button class="btn ghost" id="prev">Précédent</button>
+        <button class="btn" id="nextq">Suivant</button>
+      </div>
+      <button class="btn" id="finish" style="margin-top:10px;background:#fff;color:var(--bad);border-color:var(--bad)">Terminer l’examen</button>
+    </div>`;
+  const render = () => {
+    const q = qs[cur], opts = optsOf(q);
+    $("#qnum").textContent = `Question ${cur + 1} sur ${qs.length}`;
+    $("#qtext").textContent = q.question;
+    $("#opts").innerHTML = opts.map((o, k) => {
+      const sel = answers[cur] === k ? " sel" : "";
+      return `<button class="opt${sel}" data-v="${k}"><span class="k">${LETTERS[k]}</span><span>${o}</span></button>`;
+    }).join("");
+    $("#grid").innerHTML = qs.map((_, i) => `<button class="pill ${answers[i] !== undefined ? "done" : ""} ${i === cur ? "cur" : ""}" data-i="${i}">${i + 1}</button>`).join("");
+    $("#opts").dataset.opts = JSON.stringify(opts);
+  };
+  render();
+  $("#opts").addEventListener("click", ev => {
+    const b = ev.target.closest(".opt"); if (!b) return;
+    answers[cur] = +b.dataset.v; render();
+  });
+  $("#grid").addEventListener("click", ev => {
+    const b = ev.target.closest(".pill"); if (!b) return; cur = +b.dataset.i; render();
+  });
+  $("#prev").onclick = () => { if (cur > 0) { cur--; render(); } };
+  $("#nextq").onclick = () => { if (cur < qs.length - 1) { cur++; render(); } };
+  $("#finish").onclick = () => finish();
+  const finish = () => {
+    clearInterval(tick);
+    let score = 0, wrong = [];
+    qs.forEach((q, i) => {
+      const opts = JSON.parse(JSON.stringify(optsOf(q)));
+      if (answers[i] !== undefined && opts[answers[i]] === q.answer) score++;
+      else wrong.push({ q, chosen: answers[i], good: opts.indexOf(q.answer), opts });
+    });
+    if (!state.best["ex" + idx] || score > state.best["ex" + idx]) state.best["ex" + idx] = score;
+    save();
+    $("#app").innerHTML = `<div class="wrap">
+      <h1>Examen blanc ${idx + 1} — résultat</h1>
+      <div class="score ${score >= 32 ? "pass" : "fail"}">${score}/40</div>
+      <p class="muted">${score >= 32 ? "Au-dessus du seuil de réussite (32 sur 40)." : "Sous le seuil de 32 sur 40 : " + (32 - score) + " point(s) manquant(s)."}</p>
+      <p class="muted">Temps utilisé : ${Math.floor((2700 - left) / 60)} min.</p>
+      <h2 style="margin-top:20px">À revoir (${wrong.length})</h2>
+      ${wrong.map(w => `<div class="card"><div class="tag">${w.q.id}</div>
+        <div style="font-weight:600;margin:4px 0 8px">${w.q.question}</div>
+        <div class="muted">Votre réponse : ${w.chosen === undefined ? "aucune" : LETTERS[w.chosen] + ". " + w.opts[w.chosen]}</div>
+        <div style="color:var(--ok);font-size:.94rem;margin-top:4px">Bonne réponse : ${LETTERS[w.good]}. ${w.q.answer}</div>
+        <div class="muted" style="margin-top:6px">${w.q.explication || ""}</div></div>`).join("") || '<p class="muted">Aucune erreur.</p>'}
+      <button class="btn" onclick="home()" style="margin-top:16px">Revenir à l’accueil</button></div>`;
+  };
+  tick = setInterval(() => {
+    left--;
+    const m = String(Math.floor(left / 60)).padStart(2, "0"), s = String(left % 60).padStart(2, "0");
+    const el = $("#t");
+    if (!el) return clearInterval(tick);
+    el.textContent = m + ":" + s;
+    if (left <= 300) el.classList.add("low");
+    if (left <= 0) finish();
+  }, 1000);
+}
+home();
+
+/* ---- auto-test (usage interne : ?selftest) ---- */
+if (location.search.includes("selftest")) {
+  const res = {};
+  try {
+    res.cards = document.querySelectorAll(".card").length;
+    startTheme(1);
+    res.q = document.querySelector(".q").textContent.slice(0, 40);
+    res.opts = document.querySelectorAll(".opt").length;
+    document.querySelectorAll(".opt")[0].click();
+    res.feedback = document.querySelector("#fb").textContent.slice(0, 50);
+    res.nextVisible = !document.querySelector("#next").classList.contains("hidden");
+    document.querySelector("#next").click();
+    res.progress = document.querySelectorAll(".bar span")[1].textContent.trim();
+    startExam(0);
+    res.examPills = document.querySelectorAll(".pill").length;
+    res.timer = document.querySelector("#t").textContent;
+    document.querySelectorAll(".opt")[0].click();
+    res.answered = document.querySelectorAll(".pill.done").length;
+    res.ok = res.cards === 10 && res.opts === 4 && res.nextVisible && res.examPills === 40 && res.answered === 1;
+  } catch (e) { res.error = String(e); res.ok = false; }
+  document.title = "SELFTEST " + JSON.stringify(res);
+  document.body.insertAdjacentHTML("beforeend", '<pre id="selftest">' + JSON.stringify(res, null, 1) + "</pre>");
+}
+</script>
+</body>
+</html>
