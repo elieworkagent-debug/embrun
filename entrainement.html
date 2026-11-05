@@ -2,241 +2,587 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Test gratuit — examen civique 2026 : 40 questions chronométrées</title>
-<meta name="description" content="Faites un examen blanc de l’examen civique 2026 : 40 questions, 45 minutes, 32 pour réussir. Gratuit, sans compte, correction et explications à la fin.">
-<link rel="canonical" href="https://embrun.store/entrainement.html">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="Entraînement à l’examen civique : 259 questions corrigées et 5 examens blancs au format réel (40 questions, 45 minutes, 32 sur 40). Fonctionne hors ligne, sans compte.">
+<title>Examen civique — entraînement hors ligne</title>
 <style>
-:root{--ink:#0f1b2d;--ink2:#33425a;--ink3:#67748a;--paper:#fff;--p2:#eef2f5;--line:#c8d2dc;--ok:#0e6b4f;--bad:#a8281f}
+:root{
+  --paper:#fff;
+  --surface:#f0f4f6;
+  --ink:#101820;
+  --ink2:#46545f;
+  --ink3:#6c7a86;
+  --rule:#cbd6de;
+  --ok:#0b5c46;
+  --ok-bg:#e6f1ec;
+  --bad:#9e2b1c;
+  --bad-bg:#fbeceb;
+  --focus:#0b5c46;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Noto Serif","Times New Roman",serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+  --r:3px;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-.wrap{max-width:720px;margin:0 auto;padding:20px 18px 60px}
-h1{font-size:1.5rem;letter-spacing:-.02em;margin:0 0 6px}
-h2{font-size:1.15rem;letter-spacing:-.01em;margin:0 0 10px}
-p{margin:0 0 12px}
-.muted{color:var(--ink3);font-size:.88rem}
-.card{border:1px solid var(--line);padding:16px;margin:0 0 12px;background:var(--paper)}
-.card:hover{border-color:var(--ink)}
-button{font:inherit;cursor:pointer;border-radius:2px}
-.btn{display:inline-block;background:#141414;color:#fff;border:1px solid #141414;padding:12px 18px;font-weight:600;width:100%;text-align:center}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font:16px/1.55 var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+button{font:inherit;color:inherit;cursor:pointer;border-radius:var(--r)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- barre supérieure ---------- */
+.topbar{
+  position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px max(16px,env(safe-area-inset-left)) 12px max(16px,env(safe-area-inset-right));
+  min-height:56px;
+}
+.topbar .brand{font-weight:650;letter-spacing:-.01em;font-size:.98rem;line-height:1.2}
+.topbar .brand small{display:block;font-weight:400;color:var(--ink3);font-size:.75rem;letter-spacing:0}
+.topbar .right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.clock{
+  font:600 1.05rem/1 var(--mono);font-variant-numeric:tabular-nums;
+  letter-spacing:-.02em;padding:6px 10px;border:1px solid var(--rule);background:var(--surface);
+}
+.clock.low{color:var(--bad);border-color:var(--bad);background:var(--bad-bg)}
+.ghostbtn{background:none;border:1px solid var(--rule);padding:8px 12px;font-size:.86rem;min-height:40px}
+.ghostbtn:hover{border-color:var(--ink2)}
+
+/* ---------- coquille responsive ---------- */
+.shell{
+  max-width:1180px;margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,1fr);
+  gap:0;padding-bottom:96px;
+}
+.main{min-width:0;padding:20px max(16px,env(safe-area-inset-left)) 32px max(16px,env(safe-area-inset-right))}
+.aside{display:none;min-width:0}
+
+@media (min-width:920px){
+  .shell{grid-template-columns:minmax(0,1fr) 340px;align-items:start;padding-bottom:0}
+  .main{padding:32px 40px 64px 32px;max-width:720px}
+  .aside{
+    display:block;position:sticky;top:56px;
+    border-left:1px solid var(--rule);
+    padding:28px 24px 28px 28px;
+    background:var(--paper);
+    min-height:calc(100vh - 56px);
+  }
+  .mobile-only{display:none!important}
+  .actionbar{position:static;border:0;background:none;padding:18px 0 0;box-shadow:none}
+  .actionbar .grow{flex:0 1 auto}
+}
+@media (max-width:919px){
+  .desktop-only{display:none!important}
+}
+
+/* ---------- accueil ---------- */
+.eyebrow{font-size:.75rem;color:var(--ink3);letter-spacing:.02em;margin:0 0 6px}
+h1{font:650 clamp(1.65rem,5.6vw,2.35rem)/1.12 var(--sans);letter-spacing:-.035em;margin:0 0 12px;max-width:22ch}
+h2{font:600 1.02rem/1.3 var(--sans);letter-spacing:-.01em;margin:30px 0 12px}
+.lede{color:var(--ink2);margin:0 0 4px;max-width:62ch}
+.facts{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  margin:24px 0 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+}
+.fact{padding:14px 12px 14px 0;min-width:0}
+.fact+.fact{border-left:1px solid var(--rule);padding-left:12px}
+.fact b{display:block;font:650 clamp(1.15rem,4.6vw,1.45rem)/1.1 var(--sans);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.fact span{font-size:.74rem;color:var(--ink3);display:block;margin-top:3px;line-height:1.3}
+
+.list{border-top:1px solid var(--rule)}
+.row{
+  display:flex;align-items:center;gap:14px;width:100%;text-align:left;
+  background:none;border:0;border-bottom:1px solid var(--rule);
+  padding:15px 4px;min-height:60px;border-radius:0;
+}
+.row:hover{background:var(--surface)}
+.row .num{
+  font:600 .92rem/1 var(--mono);color:var(--ink3);
+  min-width:2.2em;flex-shrink:0;font-variant-numeric:tabular-nums;
+}
+.row .body{min-width:0;flex:1}
+.row .title{font-weight:600;display:block;line-height:1.35}
+.row .sub{color:var(--ink3);font-size:.82rem;display:block;margin-top:2px}
+.row .best{
+  font:600 .82rem/1 var(--mono);color:var(--ok);flex-shrink:0;
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.row .chev{color:var(--ink3);flex-shrink:0;font-size:1.1rem}
+
+/* ---------- question ---------- */
+.qhead{display:flex;align-items:baseline;gap:10px;margin:0 0 10px;flex-wrap:wrap}
+.qhead .tag{font:600 .78rem/1 var(--mono);color:var(--ink3);font-variant-numeric:tabular-nums}
+.qhead .theme{font-size:.78rem;color:var(--ink3)}
+.qtext{
+  font:400 1.28rem/1.45 var(--serif);margin:0 0 20px;
+  letter-spacing:-.005em;max-width:60ch;
+}
+.qtext::first-letter{font-weight:600}
+.opts{display:grid;gap:8px;margin:0 0 16px}
+.opt{
+  display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;
+  width:100%;text-align:left;background:var(--paper);
+  border:1px solid var(--rule);padding:13px 14px;min-height:56px;
+  font-size:1rem;line-height:1.4;transition:border-color .12s,background .12s;
+}
+.opt:hover{border-color:var(--ink2);background:var(--surface)}
+.opt .k{
+  font:650 .88rem/1.55 var(--mono);width:1.55em;height:1.55em;
+  display:grid;place-items:center;border:1px solid var(--rule);
+  color:var(--ink2);flex-shrink:0;
+}
+.opt.sel{border-color:var(--ink);box-shadow:inset 3px 0 0 var(--ink)}
+.opt.sel .k{background:var(--ink);color:#fff;border-color:var(--ink)}
+.opt.right{border-color:var(--ok);background:var(--ok-bg)}
+.opt.right .k{background:var(--ok);color:#fff;border-color:var(--ok)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.opt.wrong .k{background:var(--bad);color:#fff;border-color:var(--bad)}
+.opt[disabled]{cursor:default}
+
+.fb{border-left:2px solid var(--rule);padding:2px 0 2px 14px;margin:14px 0 0;font-size:.94rem;line-height:1.5;max-width:62ch}
+.fb.good{border-color:var(--ok)}
+.fb.bad{border-color:var(--bad)}
+.fb .verdict{font-weight:650;display:block;margin-bottom:2px}
+.fb.good .verdict{color:var(--ok)}
+.fb.bad .verdict{color:var(--bad)}
+
+/* ---------- grille de réponses ---------- */
+.sheet h3{font:600 .78rem/1 var(--sans);color:var(--ink3);margin:0 0 12px;letter-spacing:.01em}
+.sheet .grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin:0 0 14px}
+.cell{
+  aspect-ratio:1;display:grid;place-items:center;min-width:0;
+  border:1px solid var(--rule);background:var(--paper);
+  font:600 .82rem/1 var(--mono);color:var(--ink3);font-variant-numeric:tabular-nums;
+  padding:0;border-radius:2px;
+}
+.cell.done{background:var(--ink);border-color:var(--ink);color:#fff}
+.cell.cur{border-color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink);color:var(--ink);font-weight:700}
+.cell.done.cur{color:#fff;box-shadow:inset 0 0 0 2px var(--ink),inset 0 0 0 3px #fff}
+.cell.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.cell.ko{background:var(--bad);border-color:var(--bad);color:#fff}
+.cell.blank{background:var(--surface);color:var(--ink3)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:.75rem;color:var(--ink3);margin:0 0 16px}
+.legend i{display:inline-block;width:10px;height:10px;border:1px solid var(--rule);margin-right:5px;vertical-align:-1px}
+.legend .l-ok{background:var(--ok);border-color:var(--ok)}
+.legend .l-ko{background:var(--bad);border-color:var(--bad)}
+.legend .l-blank{background:var(--surface)}
+.sheet .count{font-size:.86rem;color:var(--ink2);margin:0 0 4px}
+.sheet .count b{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---------- barre d'action ---------- */
+.actionbar{
+  position:fixed;bottom:0;left:0;right:0;z-index:25;
+  background:var(--paper);border-top:1px solid var(--rule);
+  display:flex;gap:10px;align-items:center;
+  padding:10px max(16px,env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-right));
+}
+.actionbar .grow{flex:1}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--ink);color:#fff;border:1px solid var(--ink);
+  padding:13px 20px;font-weight:600;font-size:.95rem;min-height:48px;
+}
 .btn:hover{background:#000}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-header.bar{position:sticky;top:0;background:var(--paper);border-bottom:1px solid var(--line);padding:10px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.9rem;z-index:5}
-.timer{font-variant-numeric:tabular-nums;font-weight:600}
-.timer.low{color:var(--bad)}
-.q{font-size:1.12rem;margin:14px 0 14px;line-height:1.45}
-.opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);padding:12px;margin:0 0 8px;font-size:1rem}
-.opt:hover{border-color:var(--ink)}
-.opt .k{font-weight:700;min-width:1.4em}
-.opt.sel{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
-.opt.right{background:#e7f3ee;border-color:var(--ok)}
-.opt.wrong{background:#fbeceb;border-color:var(--bad)}
-.fb{margin:10px 0 0;font-size:.94rem}
-.fb.good{color:var(--ok)}
-.fb.bad{color:var(--bad)}
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:12px 0}
-.pill{border:1px solid var(--line);background:var(--paper);padding:8px 0;font-variant-numeric:tabular-nums;font-size:.9rem}
-.pill.done{background:var(--p2)}
-.pill.cur{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
-.score{font-size:2.4rem;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin:6px 0}
-.pass{color:var(--ok)}.fail{color:var(--bad)}
+.btn[disabled]{background:var(--rule);border-color:var(--rule);color:#fff;cursor:not-allowed}
+.btn.ghost{background:var(--paper);color:var(--ink);border-color:var(--rule)}
+.btn.ghost:hover{border-color:var(--ink);background:var(--surface)}
+.btn.end{background:var(--paper);color:var(--bad);border-color:var(--bad)}
+.btn.end:hover{background:var(--bad-bg)}
+
+/* ---------- résultat ---------- */
+.score{font:700 3.2rem/1 var(--sans);letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin:0}
+.score.pass{color:var(--ok)}
+.score.fail{color:var(--bad)}
+.verdict-line{color:var(--ink2);margin:8px 0 0;max-width:56ch}
+.threshold{height:3px;background:var(--surface);margin:20px 0 0;position:relative;max-width:520px}
+.threshold .fill{height:100%;background:var(--ink2)}
+.threshold .mark{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--bad);left:80%}
+.threshold .lbl{position:absolute;top:8px;left:80%;transform:translateX(-50%);font:600 .72rem/1 var(--mono);color:var(--bad);white-space:nowrap;margin-top:2px}
+
+details{border-top:1px solid var(--rule);padding:12px 0}
+details summary{cursor:pointer;font-weight:600;font-size:.94rem;padding:4px 0;min-height:32px}
+details[open] summary{margin-bottom:8px}
+.review{border-left:2px solid var(--rule);padding-left:14px;margin:0 0 16px;max-width:64ch}
+.review .rq{font:400 1rem/1.4 var(--serif);margin:4px 0 8px}
+.review .rl{font-size:.88rem;margin:2px 0}
+.review .rl.no{color:var(--bad)}
+.review .rl.yes{color:var(--ok);font-weight:600}
+.review .rx{font-size:.86rem;color:var(--ink2);margin-top:6px}
+
+.note{font-size:.82rem;color:var(--ink3);margin:18px 0 0;max-width:62ch}
+.cta-band{border:1px solid var(--rule);padding:16px;margin:26px 0 0;background:var(--surface)}
+.cta-band p{margin:0 0 10px;font-size:.92rem;color:var(--ink2)}
 .hidden{display:none}
-.row{display:flex;gap:10px}
-.row>*{flex:1}
-header.bar b{letter-spacing:-.02em}
-.tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3)}
 </style>
 </head>
 <body>
-<div id="app"></div>
+
+<header class="topbar" id="topbar">
+  <div class="brand" id="brand"></div>
+  <div class="right" id="topright"></div>
+</header>
+
+<main class="shell" id="app"></main>
+
 <script>
 const DATA = {"public":true,"themes":[{"n":1,"title":"Principes et valeurs de la République"},{"n":2,"title":"Système institutionnel et politique"},{"n":3,"title":"Droits et devoirs"},{"n":4,"title":"Histoire, géographie et culture"},{"n":5,"title":"Vivre dans la société française"}],"questions":[{"id":"1-5","theme":1,"question":"La liberté d’association est :","answer":"Une liberté fondamentale (loi de 1901)","wrong":["Réservée aux citoyens français","Soumise à l’autorisation du maire","Interdite aux associations religieuses"],"explication":"Chacun peut créer une association ou y adhérer, dans le respect des lois de la République."},{"id":"1-7","theme":1,"question":"Lequel de ces prénoms évoque un symbole de la République ?","answer":"Marianne","wrong":["Jeanne","Louise","Catherine"],"explication":""},{"id":"1-8","theme":1,"question":"Lequel de ces symboles représente la République française ?","answer":"Marianne","wrong":["La fleur de lys","L’aigle impérial","La couronne royale"],"explication":"Autres symboles : le drapeau tricolore, La Marseillaise, la devise, le 14 juillet."},{"id":"1-11","theme":1,"question":"Peut-on brûler publiquement un drapeau français ?","answer":"Non, c’est puni par la loi","wrong":["Oui, c’est la liberté d’expression","Oui, mais seulement le 14 juillet","Oui, si le drapeau vous appartient"],"explication":"L’outrage au drapeau tricolore ou à l’hymne national est puni par le Code pénal, notamment lors d’une manifestation publique."},{"id":"1-14","theme":1,"question":"Que porte Marianne sur la tête ?","answer":"Un bonnet phrygien","wrong":["Une couronne royale","Un casque militaire","Un chapeau de paille"],"explication":""},{"id":"1-18","theme":1,"question":"Qu’est-ce que la liberté d’association ?","answer":"Le droit de créer une association ou d’y adhérer","wrong":["L’obligation d’adhérer à un syndicat","Le droit de se réunir sans respecter la loi","Un droit réservé aux partis politiques"],"explication":"Une association qui ne respecte pas les principes républicains peut être dissoute par l’État."},{"id":"1-23","theme":1,"question":"Une personne peut-elle changer librement de religion en France ?","answer":"Oui, librement","wrong":["Non, c’est interdit","Oui, avec l’accord du maire","Oui, mais une seule fois dans sa vie"],"explication":"La laïcité garantit la liberté de conscience : avoir une religion, en changer ou ne plus en avoir."},{"id":"1-26","theme":1,"question":"En France, il est possible pour l’État de financer :","answer":"La restauration d’un monument religieux classé","wrong":["Les cérémonies d’une religion particulière","L’achat d’objets de culte pour une église","La promotion d’une religion dans les écoles"],"explication":"Mais pas la construction d’un lieu de culte ni le salaire d’un religieux (exceptions en Alsace et en Moselle)."},{"id":"1-28","theme":1,"question":"Que dit la loi de 1905 ?","answer":"Les Églises et l’État sont séparés","wrong":["Le catholicisme est la religion de l’État","Les religions sont interdites dans la rue","L’État paie les responsables religieux"],"explication":"La République garantit la liberté de conscience et le libre exercice des cultes, mais ne reconnaît, ne salarie ni ne subventionne aucun culte."},{"id":"1-30","theme":1,"question":"Quel jour célèbre-t-on officiellement la laïcité en France ?","answer":"Le 9 décembre","wrong":["Le 14 juillet","Le 1er mai","Le 11 novembre"],"explication":"Date de la loi de 1905."},{"id":"1-34","theme":1,"question":"Quelle institution française doit rester neutre en matière de religion ?","answer":"L’école publique","wrong":["Une association religieuse","Une entreprise privée","Un parti politique"],"explication":""},{"id":"2-13","theme":2,"question":"En France, est-ce obligatoire de voter ?","answer":"Non, mais c’est un devoir civique","wrong":["Oui, sinon on paie une amende","Oui, après 30 ans","Non, c’est réservé aux hommes"],"explication":""},{"id":"2-16","theme":2,"question":"Qui vote les lois ?","answer":"Le Parlement","wrong":["Le Président seul","Le préfet","Le Conseil constitutionnel"],"explication":""},{"id":"2-24","theme":2,"question":"Qui dirige l’action du gouvernement ?","answer":"Le Premier ministre","wrong":["Le président du Sénat","Le président de l’Assemblée nationale","Le Conseil d’État"],"explication":""},{"id":"2-32","theme":2,"question":"Qui assure l’intérim du président de la République en cas de décès ?","answer":"Le président du Sénat","wrong":["Le Premier ministre","Le président de l’Assemblée nationale","Le ministre de l’Intérieur"],"explication":"Jusqu’à l’élection organisée en urgence (cas de Georges Pompidou, mort en 1974)."},{"id":"2-43","theme":2,"question":"Qui a composé l’hymne de l’Union européenne ?","answer":"Ludwig van Beethoven","wrong":["Wolfgang Amadeus Mozart","Claude Debussy","Giuseppe Verdi"],"explication":"L’Ode à la joie, extrait de sa Neuvième symphonie."},{"id":"2-44","theme":2,"question":"Quand est célébrée la journée de l’Europe ?","answer":"Le 9 mai","wrong":["Le 14 juillet","Le 1er janvier","Le 11 novembre"],"explication":"En souvenir de la déclaration de Robert Schuman du 9 mai 1950."},{"id":"3-3","theme":3,"question":"Laquelle de ces citations est inscrite dans la Déclaration des Droits de l’Homme et du Citoyen de 1789 ?","answer":"« Les hommes naissent et demeurent libres et égaux en droits »","wrong":["« Tous les citoyens doivent pratiquer une religion »","« Le roi est la source de toute souveraineté »","« Le travail, la famille et la patrie sont sacrés »"],"explication":"Article 1er. Autre citation : « La liberté consiste à pouvoir faire tout ce qui ne nuit pas à autrui » (article 4)."},{"id":"3-5","theme":3,"question":"Que dit l’article 1er de la Constitution française ?","answer":"La France est une République indivisible, laïque, démocratique et sociale","wrong":["La France est une monarchie constitutionnelle et parlementaire","Le catholicisme est la religion officielle de la France","La France est un État fédéral composé de régions"],"explication":""},{"id":"3-12","theme":3,"question":"Quel texte affirme que tous les hommes naissent libres et égaux en droits ?","answer":"La Déclaration des droits de l’homme et du citoyen de 1789","wrong":["Le Code civil de Napoléon (1804)","La loi de séparation des Églises et de l’État","Le traité de Rome instituant la CEE"],"explication":""},{"id":"3-14","theme":3,"question":"Qu’est-ce que la liberté d’expression ?","answer":"Exprimer ses opinions dans les limites de la loi","wrong":["Insulter les personnes avec qui on n’est pas d’accord","Diffuser des appels à la violence en ligne","Imposer ses idées aux autres par la force"],"explication":"Interdits : injures, diffamation, appels à la haine ou à la violence."},{"id":"3-15","theme":3,"question":"Suite à une interpellation par la police, il est possible de :","answer":"Être assisté par un avocat","wrong":["Quitter librement le commissariat","Choisir le policier qui l’interroge","Exiger d’être jugé le jour même"],"explication":"La personne est informée des motifs de son arrestation et de ses droits."},{"id":"3-23","theme":3,"question":"Est-il obligatoire de porter secours à une personne en danger ?","answer":"Oui, si on peut le faire sans danger pour soi","wrong":["Non, c’est uniquement le rôle de la police","Non, aider est toujours facultatif","Oui, même s’il faut risquer sa propre vie"],"explication":"La non-assistance à personne en danger est un délit."},{"id":"3-24","theme":3,"question":"Être juré d’assises est :","answer":"Un devoir civique","wrong":["Un métier rémunéré","Réservé aux avocats","Une activité bénévole facultative"],"explication":""},{"id":"3-29","theme":3,"question":"Pour quel motif peut-on limiter la liberté d’expression ?","answer":"Pour empêcher l’incitation à la haine","wrong":["Pour interdire la critique du Gouvernement","Pour protéger une religion du blasphème","Pour interdire les opinions minoritaires"],"explication":""},{"id":"3-30","theme":3,"question":"Que doit faire un citoyen s’il est appelé à être juré dans un procès d’assises ?","answer":"Se présenter et participer au procès","wrong":["Refuser sans justification","Envoyer un proche à sa place","Choisir le procès qui l’intéresse"],"explication":"Seul un motif grave permet d’être dispensé. Un refus sans motif est puni d’une amende pouvant aller jusqu’à 3 750 €."},{"id":"3-32","theme":3,"question":"Quel est l’un des devoirs principaux d’un citoyen français ?","answer":"Respecter les lois","wrong":["Adhérer à un parti","Pratiquer une religion","Posséder un logement"],"explication":"Aussi : payer ses impôts, participer à la défense nationale, être juré si tiré au sort, voter (devoir civique)."},{"id":"3-36","theme":3,"question":"Qui peut être appelé à faire partie d’un jury d’assises en France ?","answer":"Les citoyens français tirés au sort","wrong":["Les avocats volontaires","Les policiers","Les étrangers résidant en France"],"explication":""},{"id":"4-3","theme":4,"question":"Quel est l’objectif des lois scolaires de la IIIe République ?","answer":"Rendre l’école gratuite, laïque et obligatoire","wrong":["Créer les premières universités françaises","Rendre l’école payante pour toutes les familles","Imposer l’enseignement religieux à l’école"],"explication":"Lois de Jules Ferry."},{"id":"4-14","theme":4,"question":"De quand date l’appel à la résistance du général de Gaulle ?","answer":"Du 18 juin 1940","wrong":["Du 14 juillet 1789","Du 8 mai 1945","Du 11 novembre 1918"],"explication":""},{"id":"4-23","theme":4,"question":"Que célèbre-t-on le 8 mai ?","answer":"La fin de la Seconde Guerre mondiale en Europe","wrong":["La prise de la Bastille en 1789","La fête du Travail et des travailleurs","L’armistice de la Première Guerre mondiale"],"explication":""},{"id":"4-26","theme":4,"question":"Le 11 novembre est un jour férié. À quoi correspond cette date ?","answer":"L’armistice de 1918","wrong":["La fin de la Seconde Guerre mondiale","La fête nationale","La prise de la Bastille"],"explication":"Hommage à tous les morts pour la France."},{"id":"4-28","theme":4,"question":"Qui a aboli l’esclavage en France ?","answer":"Victor Schœlcher","wrong":["Napoléon Ier","Louis XIV","Jules Ferry"],"explication":""},{"id":"4-60","theme":4,"question":"Quel musée est situé à Paris ?","answer":"Le musée du Louvre","wrong":["Le musée du Prado","Le British Museum","Le Rijksmuseum"],"explication":""},{"id":"4-69","theme":4,"question":"Quelle mer ou océan borde la France métropolitaine ?","answer":"L’océan Atlantique","wrong":["L’océan Pacifique","La mer Baltique","La mer Noire"],"explication":""},{"id":"4-70","theme":4,"question":"Quelle mer se situe entre la France et l’Angleterre ?","answer":"La Manche","wrong":["La mer Méditerranée","La mer Baltique","La mer Noire"],"explication":""},{"id":"5-6","theme":5,"question":"Dans quel cas faut-il déclarer son enfant au service d’état civil ?","answer":"À sa naissance","wrong":["À son entrée à l’école","À ses 18 ans","À son premier anniversaire"],"explication":"Les mariages et les décès doivent aussi être déclarés."},{"id":"5-11","theme":5,"question":"En cas de divorce, qui exerce l’autorité parentale ?","answer":"Les deux parents","wrong":["La mère uniquement","Le père uniquement","Les grands-parents"],"explication":""},{"id":"5-17","theme":5,"question":"À quoi sert la carte Vitale ?","answer":"À prouver ses droits à l’Assurance maladie","wrong":["À voter aux élections","À voyager en train à prix réduit","À ouvrir un compte bancaire"],"explication":""},{"id":"5-19","theme":5,"question":"Qu’est-ce que le tiers payant ?","answer":"Ne pas avancer la part remboursée","wrong":["Payer deux fois la consultation","Faire payer quelqu’un d’autre","Être soigné sans papiers d’identité"],"explication":""}],"exams":[["1-28","1-7","1-26","1-23","1-5","1-30","1-11","1-18","1-14","1-34","1-8","2-43","2-16","2-24","2-44","2-32","2-13","3-24","3-15","3-30","3-12","3-3","3-32","3-5","3-36","3-23","3-29","3-14","4-26","4-3","4-69","4-60","4-28","4-70","4-23","4-14","5-17","5-11","5-19","5-6"]]};
 const $ = s => document.querySelector(s);
-const LS = "embrun_quiz_v1";
-let state = JSON.parse(localStorage.getItem(LS) || '{"best":{},"seen":{}}');
-const save = () => localStorage.setItem(LS, JSON.stringify(state));
+const LS = "embrun_quiz_v2";
+const state = JSON.parse(localStorage.getItem(LS) || '{"best":{},"done":{}}');
+const save = () => { try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e){} };
 const byId = Object.fromEntries(DATA.questions.map(q => [q.id, q]));
+const THEMES = Object.fromEntries(DATA.themes.map(t => [t.n, t.title]));
 const LETTERS = ["A","B","C","D"];
+const isPublic = !!DATA.public;
+
 const shuffle = (a, seed) => {
-  let x = seed;
+  let x = seed | 0 || 1;
   const r = () => (x = (x * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
   for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
   return a;
 };
-const optsOf = q => shuffle([...q.wrong, q.answer], [...q.id].reduce((s,c)=>s+c.charCodeAt(0),7));
+const seedOf = q => [...q.id].reduce((s, c) => s + c.charCodeAt(0), 7);
+const optsOf = q => shuffle([...q.wrong, q.answer], seedOf(q));
 
-/* ---------- écrans ---------- */
+const setBar = (left, right) => {
+  $("#brand").innerHTML = left;
+  $("#topright").innerHTML = right || "";
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+
+/* ================= ACCUEIL ================= */
 function home() {
-  const isPub = !!DATA.public;
-  const title = isPub ? "Test gratuit — 40 questions" : "Entraînement à l’examen civique";
-  const intro = isPub
-    ? "Un examen blanc complet dans les conditions réelles : 40 questions, 45 minutes, 32 pour réussir. Sans compte, sans email, illimité. Les corrigés et les explications s’affichent à la fin."
-    : "259 questions officielles (liste du 12 décembre 2025) et 5 examens blancs au format réel : 40 questions, 45 minutes, 32 pour réussir. Fonctionne hors ligne, sans compte.";
-  const ex = DATA.exams.map((e, i) => {
+  setBar(isPublic ? "Test gratuit — 40 questions" : "Examen civique — entraînement", "");
+  document.title = isPublic ? "Test gratuit — examen civique" : "Examen civique — entraînement hors ligne";
+
+  const exams = DATA.exams.map((e, i) => {
     const best = state.best["ex" + i];
-    return `<button class="card" onclick="startExam(${i})" style="width:100%;text-align:left">
-      <div class="tag">Examen blanc ${i + 1} · 40 questions · 45 min</div>
-      <div style="font-weight:600;margin-top:4px">${best ? "Meilleur score : " + best + "/40" : "Conditions réelles"}</div></button>`;
+    return `<button class="row" onclick="startExam(${i})">
+      <span class="num">${String(i + 1).padStart(2, "0")}</span>
+      <span class="body">
+        <span class="title">Examen blanc ${i + 1}</span>
+        <span class="sub">40 questions · 45 minutes · 32 sur 40 pour réussir</span>
+      </span>
+      <span class="best">${best !== undefined ? "record " + best + "/40" : ""}</span>
+      <span class="chev">›</span>
+    </button>`;
   }).join("");
-  const th = DATA.themes.map(x => {
-    const n = DATA.questions.filter(q => q.theme === x.n).length;
-    if (!n) return "";
-    return `<button class="card" onclick="startTheme(${x.n})" style="width:100%;text-align:left">
-      <div class="tag">Thème ${x.n} · ${n} questions</div><div style="font-weight:600;margin-top:4px">${x.title}</div></button>`;
+
+  const themes = DATA.themes.map(t => {
+    const qs = DATA.questions.filter(q => q.theme === t.n);
+    if (!qs.length) return "";
+    const done = state.done["t" + t.n] || 0;
+    return `<button class="row" onclick="startTheme(${t.n})">
+      <span class="num">${t.n}</span>
+      <span class="body">
+        <span class="title">${esc(t.title)}</span>
+        <span class="sub">${qs.length} questions${done ? " · " + done + " vues" : ""}</span>
+      </span>
+      <span class="chev">›</span>
+    </button>`;
   }).join("");
-  const themesBlock = isPub ? "" : `<h2 style="margin-top:22px">Réviser par thème</h2>${th}`;
-  const footer = isPub
-    ? `<p class="muted" style="margin-top:18px">Ce test gratuit contient 40 questions. Le pack complet : 259 questions, 5 examens blancs, l’audio des 259 questions et le PDF.</p>`
-    : `<p class="muted" style="margin-top:18px">Vos scores sont enregistrés dans ce navigateur uniquement. Aucun serveur, aucune donnée envoyée.</p>`;
-  $("#app").innerHTML = `<div class="wrap">
-    <h1>${title}</h1>
-    <p class="muted">${intro}</p>
-    <h2 style="margin-top:22px">Examens blancs</h2>${ex}
-    ${themesBlock}
-    ${footer}
-  </div>`;
+
+  $("#app").innerHTML = `
+  <div class="main">
+    <p class="eyebrow">${isPublic ? "Sans compte, sans email" : "Fonctionne hors ligne"}</p>
+    <h1>${isPublic ? "Un examen blanc complet, gratuit" : "S’entraîner sur les 259 questions de l’examen civique"}</h1>
+    <p class="lede">${isPublic
+      ? "40 questions, 45 minutes, correction et explications à la fin. Aucune inscription, aucun envoi de données."
+      : "Questions officielles et examens blancs au format réel : 40 questions, 45 minutes, 32 sur 40 pour réussir. Tout reste sur votre appareil."}</p>
+
+    <div class="facts">
+      <div class="fact"><b>40</b><span>questions par examen</span></div>
+      <div class="fact"><b>45</b><span>minutes</span></div>
+      <div class="fact"><b>32/40</b><span>seuil de réussite</span></div>
+    </div>
+
+    <p style="margin:22px 0 4px"><button class="btn" style="width:100%" onclick="startExam(0)">${isPublic ? "Commencer l’examen blanc" : "Lancer un examen blanc"}</button></p>
+    <h2>Les sujets</h2>
+    <div class="list">${exams}</div>
+    ${isPublic ? "" : `<h2>Réviser thème par thème</h2><div class="list">${themes}</div>`}
+    <p class="note">${isPublic
+      ? "Ce test gratuit contient 40 questions tirées de la liste officielle. Le pack complet comprend les 259 questions, 5 examens blancs, l’audio des 259 questions et le PDF."
+      : "Vos scores sont enregistrés dans ce navigateur uniquement. Aucun serveur, aucune donnée envoyée."}</p>
+  </div>
+  <aside class="aside desktop-only">
+    <div class="sheet">
+      <h3>Une copie corrigée</h3>
+      <div class="grid">${Array.from({length: 40}, (_, k) => {
+        const ko = [12, 27].includes(k), blank = k === 38;
+        const cls = blank ? "blank" : ko ? "ko" : "ok";
+        return `<span class="cell ${cls}">${k + 1}</span>`;
+      }).join("")}</div>
+      <div class="legend"><span><i class="l-ok"></i>juste</span><span><i class="l-ko"></i>fausse</span><span><i class="l-blank"></i>sans réponse</span></div>
+      <div class="count"><b>37</b> sur 40 · <b>92 %</b></div>
+      <p class="note" style="margin-top:12px">Le corrigé est rendu à la fin de l’épreuve, jamais pendant : c’est la règle de l’examen réel.</p>
+    </div>
+  </aside>`;
 }
 
+/* ================= RÉVISION ================= */
 function startTheme(n) {
   const qs = shuffle(DATA.questions.filter(q => q.theme === n), Date.now() & 0xffff);
-  revision(qs, `Thème ${n}`);
+  revision(qs, n, 0, 0, []);
 }
 
-function startExam(i) {
-  const ids = DATA.exams[i];
-  const qs = ids.map(id => byId[id]).filter(Boolean);
-  exam(qs, i);
-}
+function revision(qs, theme, i, score, marks) {
+  if (i >= qs.length) return endRevision(qs, theme, score, marks);
+  const q = qs[i], opts = optsOf(q), good = opts.indexOf(q.answer);
 
-/* ---------- mode révision ---------- */
-function revision(qs, title, i = 0, score = 0) {
-  if (i >= qs.length) {
-    $("#app").innerHTML = `<div class="wrap"><h1>${title} — terminé</h1>
-      <div class="score ${score/qs.length>=.8?"pass":"fail"}">${score}/${qs.length}</div>
-      <p class="muted">Seuil de l’examen : 32 sur 40, soit 80 %.</p>
-      <button class="btn" onclick="home()" style="margin-top:16px">Revenir à l’accueil</button></div>`;
-    return;
-  }
-  const q = qs[i], opts = optsOf(q);
-  const letters = LETTERS;
-  $("#app").innerHTML = `<header class="bar"><span><b>${title}</b></span><span>${i + 1} / ${qs.length}</span></header>
-    <div class="wrap">
-      <div class="tag">Question ${i + 1}</div>
-      <div class="q">${q.question}</div>
-      <div id="opts">${opts.map((o, k) => `<button class="opt" data-v="${k}"><span class="k">${letters[k]}</span><span>${o}</span></button>`).join("")}</div>
-      <div id="fb" class="fb"></div>
-      <button id="next" class="btn hidden" style="margin-top:14px">Question suivante</button>
-    </div>`;
-  const good = opts.indexOf(q.answer);
+  setBar(`<small>Thème ${theme} · ${esc(THEMES[theme])}</small>Révision`,
+         `<span class="clock" style="font-size:.86rem;background:none;border:0;padding:0">${i + 1} / ${qs.length}</span>`);
+
+  $("#app").innerHTML = `
+  <div class="main">
+    <div class="qhead"><span class="tag">Question ${i + 1}</span><span class="theme">${esc(THEMES[theme])}</span></div>
+    <p class="qtext">${esc(q.question)}</p>
+    <div class="opts" id="opts" role="group" aria-label="Propositions">
+      ${opts.map((o, k) => `<button class="opt" data-v="${k}"><span class="k">${LETTERS[k]}</span><span>${esc(o)}</span></button>`).join("")}
+    </div>
+    <div id="fb" class="fb hidden" role="status" aria-live="polite"></div>
+    <div class="actionbar">
+      <button class="btn" id="next" disabled>Question suivante</button>
+    </div>
+  </div>
+  <aside class="aside desktop-only">
+    <div class="sheet">
+      <h3>Progression</h3>
+      <div class="grid">${qs.map((_, k) => `<span class="cell ${marks[k] === 1 ? "ok" : marks[k] === 0 ? "ko" : ""} ${k === i ? "cur" : ""}">${k + 1}</span>`).join("")}</div>
+      <div class="legend"><span><i class="l-ok"></i>juste</span><span><i class="l-ko"></i>fausse</span></div>
+      <div class="count">Score : <b>${score}</b> / ${i}</div>
+    </div>
+  </aside>`;
+
   $("#opts").addEventListener("click", ev => {
-    const b = ev.target.closest(".opt"); if (!b || $("#opts").dataset.done) return;
+    const b = ev.target.closest(".opt");
+    if (!b || $("#opts").dataset.done) return;
     $("#opts").dataset.done = "1";
-    const k = +b.dataset.v;
+    const k = +b.dataset.v, ok = k === good;
     [...document.querySelectorAll(".opt")].forEach(x => {
       const kk = +x.dataset.v;
+      x.disabled = true;
       if (kk === good) x.classList.add("right");
-      if (kk === k && k !== good) x.classList.add("wrong");
+      else if (kk === k) x.classList.add("wrong");
     });
-    const ok = k === good;
-    $("#fb").className = "fb " + (ok ? "good" : "bad");
-    $("#fb").textContent = (ok ? "Correct. " : "Réponse exacte : " + letters[good] + ". ") + (q.explication || "");
-    $("#next").classList.remove("hidden");
+    const fb = $("#fb");
+    fb.className = "fb " + (ok ? "good" : "bad");
+    fb.innerHTML = `<span class="verdict">${ok ? "Correct" : "Réponse exacte : " + LETTERS[good]}</span>${q.explication ? esc(q.explication) : ""}`;
+    fb.classList.remove("hidden");
+    const nb = $("#next");
+    nb.disabled = false;
+    nb.onclick = () => revision(qs, theme, i + 1, score + (ok ? 1 : 0), [...marks, ok ? 1 : 0]);
+    nb.focus();
   });
-  $("#next").onclick = () => revision(qs, title, i + 1, score + ($("#fb").classList.contains("good") ? 1 : 0));
+
+  document.addEventListener("keydown", keyNav);
+  function keyNav(e) {
+    if (e.key >= "1" && e.key <= "4" && !$("#opts").dataset.done) {
+      const b = document.querySelector(`.opt[data-v="${+e.key - 1}"]`);
+      if (b) b.click();
+    } else if (e.key === "Enter" && !$("#next").disabled) {
+      e.preventDefault(); $("#next").click();
+    }
+  }
 }
 
-/* ---------- mode examen ---------- */
-function exam(qs, idx) {
-  let cur = 0, answers = {}, left = 45 * 60, tick = null;
-  $("#app").innerHTML = `<header class="bar"><span><b>Examen blanc ${idx + 1}</b></span>
-      <span class="timer" id="t">45:00</span></header>
-    <div class="wrap">
-      <div class="grid" id="grid"></div>
-      <div class="tag" id="qnum"></div>
-      <div class="q" id="qtext"></div>
-      <div id="opts"></div>
-      <div class="row" style="margin-top:14px">
-        <button class="btn ghost" id="prev">Précédent</button>
-        <button class="btn" id="nextq">Suivant</button>
-      </div>
-      <button class="btn" id="finish" style="margin-top:10px;background:#fff;color:var(--bad);border-color:var(--bad)">Terminer l’examen</button>
-    </div>`;
+function endRevision(qs, theme, score, marks) {
+  const pct = Math.round(score / qs.length * 100);
+  const pass = score / qs.length >= 0.8;
+  setBar(`<small>Thème ${theme}</small>Révision terminée`, "");
+  $("#app").innerHTML = `
+  <div class="main">
+    <p class="eyebrow">Thème ${theme} — ${esc(THEMES[theme])}</p>
+    <h1>Révision terminée</h1>
+    <p class="score ${pass ? "pass" : "fail"}">${score}/${qs.length}</p>
+    <p class="verdict-line">${pct} % de réponses justes. Le seuil de l’examen est de 32 sur 40, soit 80 %.</p>
+    <div class="threshold"><div class="fill" style="width:${pct}%"></div><div class="mark"></div><span class="lbl">seuil 80 %</span></div>
+    <h2>Questions à revoir</h2>
+    ${qs.map((q, k) => marks[k] === 0 ? `<div class="review">
+      <div class="tag" style="font:600 .74rem/1 var(--mono);color:var(--ink3)">Question ${k + 1}</div>
+      <p class="rq">${esc(q.question)}</p>
+      <p class="rl yes">Bonne réponse : ${esc(q.answer)}</p>
+      ${q.explication ? `<p class="rx">${esc(q.explication)}</p>` : ""}
+    </div>` : "").join("") || `<p class="note">Aucune erreur sur ce thème.</p>`}
+    <div class="actionbar"><button class="btn" onclick="home()">Revenir à l’accueil</button></div>
+  </div>
+  <aside class="aside desktop-only">
+    <div class="sheet">
+      <h3>Feuille de réponses</h3>
+      <div class="grid">${qs.map((_, k) => `<span class="cell ${marks[k] === 1 ? "ok" : "ko"}">${k + 1}</span>`).join("")}</div>
+      <div class="legend"><span><i class="l-ok"></i>juste</span><span><i class="l-ko"></i>fausse</span></div>
+    </div>
+  </aside>`;
+}
+
+/* ================= EXAMEN ================= */
+function startExam(idx) {
+  const qs = DATA.exams[idx].map(id => byId[id]).filter(Boolean);
+  const st = { cur: 0, answers: {}, left: 45 * 60, tick: null, sheetOpen: false };
+  const total = qs.length;
+
+  const timerHTML = () => `<span class="clock" id="t">${fmt(st.left)}</span>`;
+  setBar(`<small>Examen blanc ${idx + 1}</small>Simulation`, timerHTML());
+
+  const fmt = s => String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+
+  const answered = () => Object.keys(st.answers).length;
+
   const render = () => {
-    const q = qs[cur], opts = optsOf(q);
-    $("#qnum").textContent = `Question ${cur + 1} sur ${qs.length}`;
-    $("#qtext").textContent = q.question;
-    $("#opts").innerHTML = opts.map((o, k) => {
-      const sel = answers[cur] === k ? " sel" : "";
-      return `<button class="opt${sel}" data-v="${k}"><span class="k">${LETTERS[k]}</span><span>${o}</span></button>`;
-    }).join("");
-    $("#grid").innerHTML = qs.map((_, i) => `<button class="pill ${answers[i] !== undefined ? "done" : ""} ${i === cur ? "cur" : ""}" data-i="${i}">${i + 1}</button>`).join("");
-    $("#opts").dataset.opts = JSON.stringify(opts);
-  };
-  render();
-  $("#opts").addEventListener("click", ev => {
-    const b = ev.target.closest(".opt"); if (!b) return;
-    answers[cur] = +b.dataset.v; render();
-  });
-  $("#grid").addEventListener("click", ev => {
-    const b = ev.target.closest(".pill"); if (!b) return; cur = +b.dataset.i; render();
-  });
-  $("#prev").onclick = () => { if (cur > 0) { cur--; render(); } };
-  $("#nextq").onclick = () => { if (cur < qs.length - 1) { cur++; render(); } };
-  $("#finish").onclick = () => finish();
-  const finish = () => {
-    clearInterval(tick);
-    let score = 0, wrong = [];
-    qs.forEach((q, i) => {
-      const opts = JSON.parse(JSON.stringify(optsOf(q)));
-      if (answers[i] !== undefined && opts[answers[i]] === q.answer) score++;
-      else wrong.push({ q, chosen: answers[i], good: opts.indexOf(q.answer), opts });
+    const q = qs[st.cur], opts = optsOf(q);
+    const last = st.cur === total - 1;
+    $("#app").innerHTML = `
+    <div class="main">
+      <div class="qhead">
+        <span class="tag">Question ${st.cur + 1} / ${total}</span>
+        <span class="theme">${esc(THEMES[q.theme] || "")}</span>
+      </div>
+      <p class="qtext">${esc(q.question)}</p>
+      <div class="opts" id="opts" role="group" aria-label="Propositions">
+        ${opts.map((o, k) => `<button class="opt ${st.answers[st.cur] === k ? "sel" : ""}" data-v="${k}" aria-pressed="${st.answers[st.cur] === k}">
+          <span class="k">${LETTERS[k]}</span><span>${esc(o)}</span></button>`).join("")}
+      </div>
+      <div class="actionbar">
+        <button class="btn ghost" id="prev" ${st.cur === 0 ? "disabled" : ""}>Précédent</button>
+        <button class="btn" id="next" >${last ? "Voir la grille" : "Suivant"}</button>
+      </div>
+      <button class="btn end mobile-only" id="finish-m" style="margin-top:12px;width:100%">Terminer l’examen</button>
+    </div>
+    <aside class="aside desktop-only">
+      <div class="sheet">
+        <h3>Feuille de réponses</h3>
+        <div class="grid">${qs.map((_, k) => `<button class="cell ${st.answers[k] !== undefined ? "done" : ""} ${k === st.cur ? "cur" : ""}" data-i="${k}" aria-label="Question ${k + 1}${st.answers[k] !== undefined ? ", répondue" : ""}">${k + 1}</button>`).join("")}</div>
+        <div class="legend"><span><i style="background:var(--ink);border-color:var(--ink)"></i>répondue</span><span><i class="l-blank"></i>à faire</span></div>
+        <div class="count"><b>${answered()}</b> / ${total} répondues</div>
+        <button class="btn end" id="finish" style="width:100%;margin-top:14px">Terminer l’examen</button>
+      </div>
+    </aside>`;
+
+    $("#opts").addEventListener("click", ev => {
+      const b = ev.target.closest(".opt");
+      if (!b) return;
+      st.answers[st.cur] = +b.dataset.v;
+      render();
+      // garder le focus sur le même choix
+      const same = document.querySelector(`.opt[data-v="${b.dataset.v}"]`);
+      if (same) same.focus();
     });
-    if (!state.best["ex" + idx] || score > state.best["ex" + idx]) state.best["ex" + idx] = score;
-    save();
-    $("#app").innerHTML = `<div class="wrap">
-      <h1>Examen blanc ${idx + 1} — résultat</h1>
-      <div class="score ${score >= 32 ? "pass" : "fail"}">${score}/40</div>
-      <p class="muted">${score >= 32 ? "Au-dessus du seuil de réussite (32 sur 40)." : "Sous le seuil de 32 sur 40 : " + (32 - score) + " point(s) manquant(s)."}</p>
-      <p class="muted">Temps utilisé : ${Math.floor((2700 - left) / 60)} min.</p>
-      <h2 style="margin-top:20px">À revoir (${wrong.length})</h2>
-      ${wrong.map(w => `<div class="card"><div class="tag">${w.q.id}</div>
-        <div style="font-weight:600;margin:4px 0 8px">${w.q.question}</div>
-        <div class="muted">Votre réponse : ${w.chosen === undefined ? "aucune" : LETTERS[w.chosen] + ". " + w.opts[w.chosen]}</div>
-        <div style="color:var(--ok);font-size:.94rem;margin-top:4px">Bonne réponse : ${LETTERS[w.good]}. ${w.q.answer}</div>
-        <div class="muted" style="margin-top:6px">${w.q.explication || ""}</div></div>`).join("") || '<p class="muted">Aucune erreur.</p>'}
-      <button class="btn" onclick="home()" style="margin-top:16px">Revenir à l’accueil</button></div>`;
+    document.querySelectorAll(".cell[data-i]").forEach(c => {
+      c.onclick = () => { st.cur = +c.dataset.i; render(); };
+    });
+    $("#prev").onclick = () => { if (st.cur > 0) { st.cur--; render(); } };
+    $("#next").onclick = () => {
+      if (!last) { st.cur++; render(); }
+      else { document.querySelector(".sheet").scrollIntoView({ block: "center" }); }
+    };
+    const fin = document.getElementById("finish");
+    if (fin) fin.onclick = () => finish();
+    const finm = document.getElementById("finish-m");
+    if (finm) finm.onclick = () => finish();
+    document.addEventListener("keydown", keyNav);
+    function keyNav(e) {
+      if (e.key >= "1" && e.key <= "4") {
+        const b = document.querySelector(`.opt[data-v="${+e.key - 1}"]`);
+        if (b) b.click();
+      } else if (e.key === "ArrowLeft" && st.cur > 0) { st.cur--; render(); }
+      else if (e.key === "ArrowRight" && st.cur < total - 1) { st.cur++; render(); }
+    }
   };
-  tick = setInterval(() => {
-    left--;
-    const m = String(Math.floor(left / 60)).padStart(2, "0"), s = String(left % 60).padStart(2, "0");
-    const el = $("#t");
-    if (!el) return clearInterval(tick);
-    el.textContent = m + ":" + s;
-    if (left <= 300) el.classList.add("low");
-    if (left <= 0) finish();
+
+  const finish = () => {
+    clearInterval(st.tick);
+    let score = 0; const wrong = [];
+    qs.forEach((q, k) => {
+      const opts = optsOf(q);
+      const chosen = st.answers[k];
+      if (chosen !== undefined && opts[chosen] === q.answer) score++;
+      else wrong.push({ k, q, chosen, good: opts.indexOf(q.answer), opts });
+    });
+    if (state.best["ex" + idx] === undefined || score > state.best["ex" + idx]) state.best["ex" + idx] = score;
+    save();
+    results(qs, idx, score, wrong, 2700 - st.left);
+  };
+
+  render();
+  st.tick = setInterval(() => {
+    st.left--;
+    const el = document.getElementById("t");
+    if (!el) return clearInterval(st.tick);
+    el.textContent = fmt(st.left);
+    if (st.left <= 300) el.classList.add("low");
+    if (st.left <= 0) finish();
   }, 1000);
 }
+
+function results(qs, idx, score, wrong, used) {
+  const total = qs.length;
+  const pass = score / total >= 0.8;
+  const mins = Math.floor(used / 60), secs = used % 60;
+  setBar(`<small>Examen blanc ${idx + 1}</small>Résultat`, "");
+  $("#app").innerHTML = `
+  <div class="main">
+    <p class="eyebrow">Examen blanc ${idx + 1} — corrigé</p>
+    <h1>${score} sur ${total}</h1>
+    <p class="score ${pass ? "pass" : "fail"}">${Math.round(score / total * 100)} %</p>
+    <p class="verdict-line">${pass
+      ? "Au-dessus du seuil de réussite. À l’épreuve réelle, 32 sur 40 suffisent."
+      : "Sous le seuil de 32 sur 40. Il manque " + (32 - score) + " point" + ((32 - score) > 1 ? "s" : "") + "."} Temps utilisé : ${mins} min ${String(secs).padStart(2, "0")} s.</p>
+    <div class="threshold"><div class="fill" style="width:${Math.round(score / total * 100)}%"></div><div class="mark"></div><span class="lbl">seuil 80 %</span></div>
+
+    <h2>À revoir (${wrong.length})</h2>
+    ${wrong.map(w => `<div class="review">
+      <div class="tag" style="font:600 .74rem/1 var(--mono);color:var(--ink3)">Question ${w.k + 1}</div>
+      <p class="rq">${esc(w.q.question)}</p>
+      <p class="rl no">Votre réponse : ${w.chosen === undefined ? "aucune" : LETTERS[w.chosen] + ". " + esc(w.opts[w.chosen])}</p>
+      <p class="rl yes">Bonne réponse : ${LETTERS[w.good]}. ${esc(w.q.answer)}</p>
+      ${w.q.explication ? `<p class="rx">${esc(w.q.explication)}</p>` : ""}
+    </div>`).join("") || `<p class="note">Aucune erreur. Vous êtes au niveau de l’épreuve.</p>`}
+
+    <div class="actionbar"><button class="btn" onclick="home()">Revenir à l’accueil</button></div>
+  </div>
+  <aside class="aside desktop-only">
+    <div class="sheet">
+      <h3>Feuille de réponses</h3>
+      <div class="grid">${qs.map((q, k) => {
+        const chosen = (wrong.find(w => w.k === k) || {}).chosen;
+        const isWrong = wrong.some(w => w.k === k);
+        const cls = !isWrong ? "ok" : chosen === undefined ? "blank" : "ko";
+        return `<span class="cell ${cls}">${k + 1}</span>`;
+      }).join("")}</div>
+      <div class="legend"><span><i class="l-ok"></i>juste</span><span><i class="l-ko"></i>fausse</span><span><i class="l-blank"></i>sans réponse</span></div>
+      <div class="count"><b>${score}</b> justes · <b>${wrong.length}</b> à revoir</div>
+    </div>
+  </aside>`;
+}
+
 home();
 
 /* ---- auto-test (usage interne : ?selftest) ---- */
 if (location.search.includes("selftest")) {
   const res = {};
   try {
-    res.cards = document.querySelectorAll(".card").length;
+    res.rows = document.querySelectorAll(".row").length;
+    res.h1 = document.querySelector("h1").textContent.slice(0, 40);
+    res.aside = !!document.querySelector(".aside");
+    res.cssw = getComputedStyle(document.querySelector(".shell")).gridTemplateColumns;
     startTheme(1);
-    res.q = document.querySelector(".q").textContent.slice(0, 40);
+    res.qtext = document.querySelector(".qtext").textContent.slice(0, 40);
     res.opts = document.querySelectorAll(".opt").length;
+    res.cells = document.querySelectorAll(".cell").length;
     document.querySelectorAll(".opt")[0].click();
-    res.feedback = document.querySelector("#fb").textContent.slice(0, 50);
-    res.nextVisible = !document.querySelector("#next").classList.contains("hidden");
-    document.querySelector("#next").click();
-    res.progress = document.querySelectorAll(".bar span")[1].textContent.trim();
+    res.feedback = document.querySelector("#fb").textContent.slice(0, 40);
+    res.nextEnabled = !document.querySelector("#next").disabled;
     startExam(0);
-    res.examPills = document.querySelectorAll(".pill").length;
+    res.examCells = document.querySelectorAll(".cell").length;
     res.timer = document.querySelector("#t").textContent;
     document.querySelectorAll(".opt")[0].click();
-    res.answered = document.querySelectorAll(".pill.done").length;
-    res.ok = res.cards === 10 && res.opts === 4 && res.nextVisible && res.examPills === 40 && res.answered === 1;
+    res.answered = document.querySelectorAll(".cell.done").length;
+    res.ok = res.opts === 4 && res.nextEnabled && res.examCells === 40 && res.answered === 1;
   } catch (e) { res.error = String(e); res.ok = false; }
   document.title = "SELFTEST " + JSON.stringify(res);
   document.body.insertAdjacentHTML("beforeend", '<pre id="selftest">' + JSON.stringify(res, null, 1) + "</pre>");
