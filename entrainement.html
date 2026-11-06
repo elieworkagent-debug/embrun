@@ -1042,8 +1042,37 @@ addEventListener("click", ev => {
 
 document.getElementById("brand").addEventListener("click", ev => { if (goHomeLink(ev)) ev.preventDefault(); });
 
+// Mesure : événement « fin » envoyé une seule fois par page, au premier affichage du résultat.
+// s/m/c : utm_source/utm_medium/utm_campaign de l'URL, sinon celles du premier contact
+// (localStorage "embrun_src", remplacé par toute nouvelle utm_source dans l'URL).
+let finSent = false;
+function trackFin(score, total) {
+  if (finSent) return;
+  finSent = true;
+  try {
+    const K = "embrun_src", q = new URLSearchParams(location.search);
+    const g = n => { const v = q.get(n); return v && v.trim() ? v.trim().slice(0, 80) : ""; };
+    let st = {};
+    try { st = JSON.parse(localStorage.getItem(K) || "{}") || {}; } catch (e) { st = {}; }
+    if (typeof st !== "object") st = {};
+    const s = g("utm_source"), m = g("utm_medium"), c = g("utm_campaign");
+    if (s) { st = { s, m, c }; try { localStorage.setItem(K, JSON.stringify(st)); } catch (e) {} }
+    const body = JSON.stringify({ p: "/entrainement", e: "fin", v: Math.round(score / total * 40 * 100) / 100,
+      s: st.s || "", m: st.m || "", c: st.c || "" });
+    const u = "https://openclaw-vm.tail5af44b.ts.net:8443/hit";
+    if (navigator.sendBeacon && navigator.sendBeacon(u, new Blob([body], { type: "text/plain;charset=UTF-8" }))) return;
+    try {
+      const x = new XMLHttpRequest();
+      x.open("POST", u, true);
+      x.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+      x.send(body);
+    } catch (e) { fetch(u, { method: "POST", mode: "no-cors", body }).catch(() => {}); }
+  } catch (e) {}
+}
+
 function results(qs, idx, score, wrong, used) {
   const total = qs.length;
+  trackFin(score, total);
   clearExam();   // fin d'épreuve : plus rien à reprendre (couvre aussi les reprises invalides)
   const pass = score / total >= 0.8;
   const mins = Math.floor(used / 60), secs = used % 60;
@@ -1275,6 +1304,5 @@ if (location.search.includes("selftest")) (async () => {
 })();
 </script>
 <script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){});});}</script>
-<script>addEventListener("load",function(){try{var d=JSON.stringify({p:location.pathname,r:document.referrer,w:screen.width});var u="https://openclaw-vm.tail5af44b.ts.net:8443/hit";navigator.sendBeacon?navigator.sendBeacon(u,d):fetch(u,{method:"POST",mode:"no-cors",body:d});}catch(e){}});</script>
 </body>
 </html>
