@@ -725,3 +725,6 @@ a.btn,a.btn:hover,a.btn-ghost,a.btnlink,a.langlink,a.brand{-webkit-text-decorati
 .q-total{margin-top:16px}
 .q-shortcuts{margin-top:16px;font-size:.95rem;line-height:2}
 .q-faq{margin-top:18px}
+
+/* Ancre sous barre fixe : decaler la cible. */
+h1[id],h2[id],h3[id],section[id]{scroll-margin-top:88px}
