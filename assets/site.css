@@ -728,3 +728,6 @@ a.btn,a.btn:hover,a.btn-ghost,a.btnlink,a.langlink,a.brand{-webkit-text-decorati
 
 /* Ancre sous barre fixe : decaler la cible. */
 h1[id],h2[id],h3[id],section[id]{scroll-margin-top:88px}
+
+/* Note de reassurance sous le CTA des cartes de pack */
+.go-note{display:block;margin-top:8px;font-size:.8rem;color:var(--ink3);letter-spacing:.01em}
