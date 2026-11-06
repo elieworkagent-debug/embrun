@@ -223,6 +223,15 @@ details[open] summary{margin-bottom:8px}
 .cta-band p{margin:0 0 10px;font-size:.92rem;color:var(--ink2)}
 .hidden{display:none}
 </style>
+<style>
+.packcta{margin:24px 0 28px;border:1px solid var(--rule);border-radius:10px;padding:18px 20px;background:#fff}
+.packcta h3{margin:0 0 8px;font-size:1.05rem}
+.packcta p{margin:0 0 14px;color:var(--ink3);line-height:1.6}
+.packcta-l{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.packcta-2{color:var(--blue);font-weight:600;font-size:.92rem;text-decoration:none;border-bottom:1px solid transparent}
+.packcta-2:hover{border-bottom-color:var(--blue)}
+@media(max-width:520px){.packcta{padding:15px 16px}.packcta-l .btn{width:100%;text-align:center}}
+</style>
 </head>
 <body>
 <h1 style="position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0">Test civique gratuit 2026 : 40 questions officielles en 45 minutes</h1>
@@ -406,6 +415,18 @@ function endRevision(qs, theme, score, marks) {
     <p class="score ${pass ? "pass" : "fail"}">${score}/${qs.length}</p>
     <p class="verdict-line">${pct} % de réponses justes. Le seuil de l’examen est de 32 sur 40, soit 80 %.</p>
     <div class="threshold"><div class="fill" style="width:${pct}%"></div><div class="mark"></div><span class="lbl">seuil 80 %</span></div>
+
+    <div class="packcta">
+      <h3>Les questions à revoir, avec l’explication</h3>
+      <p>Les 259 questions de la liste officielle, la bonne réponse expliquée, l’audio de 2 h 48
+      et cinq examens blancs corrigés. 19&nbsp;€ une fois, sans abonnement.</p>
+      <div class="packcta-l">
+        <a class="btn" href="/fr/">Voir le pack — 19&nbsp;€</a>
+        <a class="packcta-2" href="/fr/audio/">Écouter les 259 questions</a>
+        <a class="packcta-2" href="/fr/questions/">Voir les 259 réponses</a>
+      </div>
+    </div>
+
     <h2>Questions à revoir</h2>
     ${qs.map((q, k) => marks[k] === 0 ? `<div class="review">
       <div class="tag" style="font:600 .74rem/1 var(--mono);color:var(--ink3)">Question ${k + 1}</div>
@@ -536,6 +557,18 @@ function results(qs, idx, score, wrong, used) {
       ? "Au-dessus du seuil de réussite. À l’épreuve réelle, 32 sur 40 suffisent."
       : "Sous le seuil de 32 sur 40. Il manque " + (32 - score) + " point" + ((32 - score) > 1 ? "s" : "") + "."} Temps utilisé : ${mins} min ${String(secs).padStart(2, "0")} s.</p>
     <div class="threshold"><div class="fill" style="width:${Math.round(score / total * 100)}%"></div><div class="mark"></div><span class="lbl">seuil 80 %</span></div>
+
+    <div class="packcta">
+      <h3>Les questions à revoir, avec l’explication</h3>
+      <p>Les 259 questions de la liste officielle, la bonne réponse expliquée, l’audio de 2 h 48
+      et cinq examens blancs corrigés. 19&nbsp;€ une fois, sans abonnement.</p>
+      <div class="packcta-l">
+        <a class="btn" href="/fr/">Voir le pack — 19&nbsp;€</a>
+        <a class="packcta-2" href="/fr/audio/">Écouter les 259 questions</a>
+        <a class="packcta-2" href="/fr/questions/">Voir les 259 réponses</a>
+      </div>
+    </div>
+
 
     <h2>À revoir (${wrong.length})</h2>
     ${wrong.map(w => `<div class="review">
