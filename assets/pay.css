@@ -1,0 +1,8 @@
+/* Bande de moyens de paiement sous les boutons d'achat */
+.paylogos{display:flex;flex-direction:row;align-items:center;flex-wrap:wrap;gap:18px;border:0;box-shadow:none;opacity:.9}
+.paylogos img{height:26px;width:auto}
+.paylogos-note{font-size:.82rem;color:var(--ink-soft)}
+@media (max-width:560px){
+  .paylogos{gap:14px}
+  .paylogos img{height:22px}
+}
