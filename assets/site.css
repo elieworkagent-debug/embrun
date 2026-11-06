@@ -98,7 +98,7 @@ li{margin:0 0 .35em}
 hr{border:0;border-top:1px solid var(--rule);margin:0}
 ::selection{background:var(--ink);color:var(--paper)}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
-.mainnav a:focus-visible,.langlink:focus-visible,.brand:focus-visible{outline-offset:1px}
+.langlink:focus-visible,.brand:focus-visible{outline-offset:1px}  /* .mainnav : réglé dans la section 5 */
 .dark :focus-visible,.ftr :focus-visible,.on-blue :focus-visible{outline-color:var(--paper);outline-offset:3px}
 
 /* Lien d'évitement : premier élément focusable. */
@@ -209,18 +209,24 @@ main > .sec:first-of-type{border-top:0}
 }
 .brand span{color:var(--ink-soft);font-weight:400}
 .brand:hover{color:var(--ink)}
-.docref{
-  font-size:var(--f-s);color:var(--ink-soft);padding-left:14px;border-left:1px solid var(--rule);
-}
+.docref{display:inline-flex;align-items:center;gap:8px;font-size:var(--f-s);color:var(--ink-soft);padding-left:14px;border-left:1px solid var(--rule)}
+.flag{display:block;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+@media (max-width:899.98px){.docref{display:none}}
 .mainnav ul{display:flex;gap:clamp(12px,1.8vw,22px);list-style:none;margin:0;padding:0;align-items:center}
 .mainnav li{margin:0}
-.mainnav a{
-  display:inline-block;padding:10px 0;color:var(--ink);text-decoration:none;font-size:.95rem;font-weight:500;
-  border-bottom:2px solid transparent;background:none;
-}
+/* Rubrique active : graisse + soulignement bleu, indépendamment du pointeur.
+   Au survol d'une autre rubrique, la barre de la rubrique active reste posée. */
+.mainnav a{position:relative;display:inline-block;padding:10px 0;color:var(--ink-soft);text-decoration:none;font-size:.95rem;font-weight:400;background:none;transition:color .18s ease}
+.mainnav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+.mainnav a:hover{color:var(--ink)}
+.mainnav a:hover::after{transform:scaleX(1);background:var(--rule)}
+.mainnav a:hover:not([aria-current="page"])::after{transform:scaleX(.45)}
+.mainnav a[aria-current="page"]{color:var(--ink);font-weight:700}
+.mainnav a[aria-current="page"]::after{transform:scaleX(1);background:var(--blue)}
+.mainnav a:hover[aria-current="page"]::after{transform:scaleX(1);background:var(--blue)}
+.mainnav a:active{transform:translateY(1px)}
+.mainnav a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
 a.btn,a.btn:hover,a.btn-ghost,a.btnlink,a.langlink,a.brand{-webkit-text-decoration:none;text-decoration:none}
-.mainnav a:hover{border-bottom-color:var(--ink)}
-.mainnav a[aria-current="page"]{border-bottom-color:var(--blue);color:var(--ink);font-weight:600;background:none}
 .headcta{margin-left:auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .langlink{font-size:.9rem;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--rule);padding:6px 0}
 .langlink:hover{color:var(--ink);border-color:var(--ink)}
