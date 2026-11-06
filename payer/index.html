@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payer par USDC — pack Examen civique 2026 Embrun</title>
+<meta name="description" content="Payer le pack Embrun en 20 USDC sur le réseau Polygon, puis vérifier la transaction pour recevoir le lien de téléchargement.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://embrun.store/payer/">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#ffffff">
+<link rel="preload" href="/assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css?v=13">
+<style>
+/* Paiement USDC : jetons de site.css reutilises, styles propres a la page */
+.pay-hero h1{font-family:var(--serif);max-width:16ch}
+.price-big{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-0.03em;line-height:1;font-variant-numeric:tabular-nums;margin:6px 0 0}
+.price-big span{font-size:.9rem;font-weight:500;letter-spacing:0;color:var(--ink-soft);margin-left:8px}
+.addr{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:10px 0 0}
+.addr code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:clamp(1.05rem,1.8vw,1.35rem);font-weight:700;
+  background:var(--slate);border:1px solid var(--ink);border-radius:2px;padding:12px 14px;word-break:break-all;user-select:all}
+.netwarn{margin:16px 0 0;padding:14px 16px;border-left:4px solid var(--red);background:var(--slate);border-radius:0 2px 2px 0;max-width:60ch}
+.netwarn b{color:var(--ink)}
+.paysteps{counter-reset:s;list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--ink)}
+.paysteps li{counter-increment:s;position:relative;padding:12px 0 12px 40px;border-bottom:1px solid var(--rule);margin:0}
+.paysteps li::before{content:counter(s);position:absolute;left:0;top:11px;width:24px;height:24px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:.8rem;font-weight:600;line-height:1}
+.qrbox{max-width:260px;margin:20px auto 0;padding:8px;border:1px solid var(--rule);background:var(--paper)}
+.qrbox svg{display:block;width:100%;height:auto}
+.qrbox figcaption{margin-top:8px;font-size:.78rem;line-height:1.4;color:var(--ink-soft);text-align:center}
+.verif{margin-top:16px;display:grid;gap:8px;max-width:560px}
+.verif label{font-weight:600;font-size:.95rem}
+.verif input{width:100%;padding:12px;font-size:1rem;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;border:1px solid var(--ink);border-radius:2px;background:var(--paper);color:var(--ink)}
+.verif input[aria-invalid="true"]{border-color:var(--red);border-width:2px}
+.verif .actions{margin-top:8px}
+.resultat{margin-top:16px;max-width:62ch;padding:14px 16px;border-radius:2px;background:var(--slate);font-size:.98rem;line-height:1.5}
+.resultat.ko{border-left:4px solid var(--red)}
+.resultat.ok{border-left:4px solid var(--pass)}
+.resultat p{margin:0 0 .6em}
+.resultat a.btn{margin:0 0 10px}
+@media (max-width:420px){.addr code{font-size:1rem}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">embrun<span>.store</span></a>
+    <span class="docref"><svg class="flag" viewBox="0 0 30 20" width="20" height="13" aria-hidden="true" focusable="false"><rect width="10" height="20" x="0" fill="#0055A4"/><rect width="10" height="20" x="10" fill="#FFFFFF"/><rect width="10" height="20" x="20" fill="#EF4135"/></svg>Examen civique 2026</span>
+    <nav class="mainnav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="/fr/">Le pack</a></li>
+        <li><a href="/prix/">Prix</a></li>
+        <li><a href="/entrainement.html">Test gratuit</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <section class="sec hero pay-hero" aria-labelledby="titre">
+    <aside class="rail" aria-label="Récapitulatif du paiement">
+      <div class="rl"><span class="rk">Prix</span><span class="rv">20 USDC</span></div>
+      <div class="rl"><span class="rk">Réseau</span><span class="rv">Polygon PoS</span></div>
+      <div class="rl"><span class="rk">Contenu</span><span class="rv">Audio, PDF, 5 examens</span></div>
+      <div class="rl"><span class="rk">Livraison</span><span class="rv">Lien vérifié</span></div>
+    </aside>
+    <div class="main">
+      <div class="hero-copy">
+        <h1 id="titre">Payer par USDC</h1>
+        <p class="lead">Un seul paiement, sans compte et sans abonnement&nbsp;: envoyez 20&nbsp;USDC sur Polygon, puis vérifiez la transaction pour recevoir le lien de téléchargement.</p>
+        <div class="price-big">20 USDC <span>paiement unique</span></div>
+        <p class="small" style="margin-top:10px">Le pack est à 19&nbsp;€ réglé par carte. En USDC sur Polygon, il coûte 20&nbsp;USDC, une fois&nbsp;; les frais de réseau sont payés par vous au moment de l’envoi.</p>
+
+        <h2 id="adresse" style="font-family:var(--serif);font-size:1.5rem;margin-top:clamp(24px,3vw,32px)">Adresse du portefeuille</h2>
+        <div class="addr">
+          <code id="payaddr">0x8dceAAE8788E232bFc5F825B6D6bf696E5b82DfC</code>
+          <button class="btn" type="button" id="copier">Copier</button>
+          <span class="sr" id="copie-etat" role="status" aria-live="polite"></span>
+        </div>
+        <p class="netwarn"><b>Reseau Polygon uniquement. N’envoyez pas d’USDC depuis Ethereum ni par un pont.</b><br>
+          <span class="small">Token&nbsp;: USDC natif de Polygon (<span class="nowrap">0x3c49…3359</span>), montant&nbsp;: 20&nbsp;USDC, en une seule transaction.</span></p>
+
+        <dl class="factstrip">
+          <div><dt>20 USDC</dt><dd>montant exact, une transaction</dd></div>
+          <div><dt>Polygon PoS</dt><dd>USDC natif, pas l’USDC bridgé</dd></div>
+          <div><dt>Vérifié</dt><dd>lecture directe de la blockchain</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <div class="railband" aria-label="Récapitulatif">
+    <ol>
+      <li><span class="rk">Prix</span><span class="rv">20 USDC</span></li>
+      <li><span class="rk">Réseau</span><span class="rv">Polygon PoS</span></li>
+      <li><span class="rk">Contenu</span><span class="rv">Audio, PDF, 5 examens</span></li>
+    </ol>
+  </div>
+
+  <section class="sec" id="envoyer" aria-labelledby="h-envoyer">
+    <aside class="rail" aria-label="Étapes">
+      <div class="rl"><span class="rk">1</span><span class="rv">Adresse et montant</span></div>
+      <div class="rl"><span class="rk">2</span><span class="rv">Envoi USDC</span></div>
+      <div class="rl"><span class="rk">3</span><span class="rv">Hash et vérification</span></div>
+    </aside>
+    <div class="main">
+      <h2 id="h-envoyer" style="font-family:var(--serif)">Comment payer</h2>
+      <div class="hero" style="padding:0;border:0;margin-top:12px">
+        <div class="main">
+          <ol class="paysteps">
+            <li><strong>Ouvrez votre portefeuille</strong> sur le réseau Polygon et collez l’adresse ci-dessus, ou scannez le QR code.</li>
+            <li><strong>Envoyez exactement 20 USDC</strong> (USDC natif de Polygon), en une seule transaction.</li>
+            <li><strong>Après l’envoi, copiez le hash de la transaction</strong>&nbsp;: il fait 66 caractères et commence par <code>0x</code>. Vous le trouvez dans votre portefeuille, ou sur Polygonscan.</li>
+            <li><strong>Collez-le ci-dessous</strong> et cliquez sur «&nbsp;Vérifier mon paiement&nbsp;»&nbsp;: le lien de téléchargement apparaît si la blockchain confirme le paiement.</li>
+          </ol>
+          <div class="alert" style="margin-top:16px">
+            <p><b>En cas d’erreur&nbsp;:</b> n’envoyez pas un second paiement. Écrivez à <a href="mailto:eliework@embrun.store">eliework@embrun.store</a> avec le hash de la transaction&nbsp;; nous la vérifions à la main.</p>
+          </div>
+        </div>
+        <figure class="qrbox">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" width="35" height="35" role="img" aria-label="QR code de l'adresse de paiement USDC" shape-rendering="crispEdges" style="display:block;width:100%;height:auto"><rect width="35" height="35" fill="#ffffff"/><path d="M3 3h7v1h-7zM14 3h1v1h-1zM19 3h2v1h-2zM22 3h1v1h-1zM25 3h7v1h-7zM3 4h1v1h-1zM9 4h1v1h-1zM12 4h1v1h-1zM16 4h1v1h-1zM18 4h2v1h-2zM21 4h1v1h-1zM25 4h1v1h-1zM31 4h1v1h-1zM3 5h1v1h-1zM5 5h3v1h-3zM9 5h1v1h-1zM11 5h3v1h-3zM15 5h1v1h-1zM18 5h2v1h-2zM21 5h3v1h-3zM25 5h1v1h-1zM27 5h3v1h-3zM31 5h1v1h-1zM3 6h1v1h-1zM5 6h3v1h-3zM9 6h1v1h-1zM11 6h2v1h-2zM16 6h1v1h-1zM18 6h4v1h-4zM25 6h1v1h-1zM27 6h3v1h-3zM31 6h1v1h-1zM3 7h1v1h-1zM5 7h3v1h-3zM9 7h1v1h-1zM11 7h1v1h-1zM13 7h2v1h-2zM16 7h2v1h-2zM23 7h1v1h-1zM25 7h1v1h-1zM27 7h3v1h-3zM31 7h1v1h-1zM3 8h1v1h-1zM9 8h1v1h-1zM11 8h1v1h-1zM13 8h1v1h-1zM15 8h1v1h-1zM18 8h4v1h-4zM23 8h1v1h-1zM25 8h1v1h-1zM31 8h1v1h-1zM3 9h7v1h-7zM11 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM21 9h1v1h-1zM23 9h1v1h-1zM25 9h7v1h-7zM11 10h4v1h-4zM18 10h2v1h-2zM21 10h1v1h-1zM23 10h1v1h-1zM3 11h1v1h-1zM5 11h5v1h-5zM12 11h2v1h-2zM16 11h1v1h-1zM18 11h1v1h-1zM20 11h2v1h-2zM23 11h1v1h-1zM25 11h5v1h-5zM3 12h2v1h-2zM7 12h2v1h-2zM10 12h3v1h-3zM17 12h3v1h-3zM22 12h1v1h-1zM25 12h1v1h-1zM27 12h2v1h-2zM30 12h2v1h-2zM3 13h2v1h-2zM7 13h3v1h-3zM16 13h1v1h-1zM18 13h1v1h-1zM23 13h3v1h-3zM27 13h1v1h-1zM4 14h1v1h-1zM7 14h1v1h-1zM10 14h1v1h-1zM14 14h2v1h-2zM19 14h1v1h-1zM22 14h1v1h-1zM24 14h1v1h-1zM28 14h1v1h-1zM30 14h1v1h-1zM6 15h1v1h-1zM8 15h4v1h-4zM14 15h1v1h-1zM17 15h3v1h-3zM26 15h1v1h-1zM29 15h3v1h-3zM5 16h4v1h-4zM10 16h2v1h-2zM13 16h3v1h-3zM21 16h4v1h-4zM27 16h1v1h-1zM31 16h1v1h-1zM6 17h1v1h-1zM8 17h2v1h-2zM14 17h1v1h-1zM17 17h5v1h-5zM26 17h1v1h-1zM28 17h3v1h-3zM3 18h1v1h-1zM5 18h2v1h-2zM11 18h1v1h-1zM13 18h1v1h-1zM18 18h1v1h-1zM21 18h3v1h-3zM26 18h3v1h-3zM30 18h1v1h-1zM5 19h3v1h-3zM9 19h2v1h-2zM13 19h1v1h-1zM16 19h2v1h-2zM19 19h3v1h-3zM24 19h1v1h-1zM26 19h1v1h-1zM29 19h3v1h-3zM3 20h1v1h-1zM5 20h1v1h-1zM7 20h1v1h-1zM10 20h1v1h-1zM12 20h1v1h-1zM15 20h1v1h-1zM23 20h1v1h-1zM25 20h1v1h-1zM27 20h2v1h-2zM31 20h1v1h-1zM3 21h1v1h-1zM5 21h2v1h-2zM8 21h2v1h-2zM12 21h1v1h-1zM14 21h5v1h-5zM20 21h1v1h-1zM24 21h1v1h-1zM27 21h2v1h-2zM3 22h1v1h-1zM7 22h2v1h-2zM10 22h2v1h-2zM13 22h1v1h-1zM15 22h1v1h-1zM19 22h1v1h-1zM21 22h2v1h-2zM24 22h2v1h-2zM28 22h1v1h-1zM30 22h1v1h-1zM3 23h1v1h-1zM9 23h2v1h-2zM13 23h2v1h-2zM17 23h3v1h-3zM23 23h5v1h-5zM30 23h1v1h-1zM11 24h1v1h-1zM13 24h2v1h-2zM21 24h1v1h-1zM23 24h1v1h-1zM27 24h1v1h-1zM31 24h1v1h-1zM3 25h7v1h-7zM14 25h1v1h-1zM16 25h1v1h-1zM18 25h1v1h-1zM22 25h2v1h-2zM25 25h1v1h-1zM27 25h2v1h-2zM30 25h1v1h-1zM3 26h1v1h-1zM9 26h1v1h-1zM11 26h1v1h-1zM13 26h3v1h-3zM17 26h1v1h-1zM19 26h1v1h-1zM21 26h3v1h-3zM27 26h2v1h-2zM30 26h2v1h-2zM3 27h1v1h-1zM5 27h3v1h-3zM9 27h1v1h-1zM11 27h5v1h-5zM18 27h1v1h-1zM20 27h2v1h-2zM23 27h5v1h-5zM30 27h2v1h-2zM3 28h1v1h-1zM5 28h3v1h-3zM9 28h1v1h-1zM11 28h1v1h-1zM13 28h1v1h-1zM15 28h2v1h-2zM19 28h1v1h-1zM23 28h2v1h-2zM26 28h1v1h-1zM30 28h2v1h-2zM3 29h1v1h-1zM5 29h3v1h-3zM9 29h1v1h-1zM11 29h1v1h-1zM13 29h3v1h-3zM18 29h1v1h-1zM20 29h1v1h-1zM25 29h1v1h-1zM27 29h2v1h-2zM30 29h1v1h-1zM3 30h1v1h-1zM9 30h1v1h-1zM13 30h4v1h-4zM21 30h4v1h-4zM26 30h3v1h-3zM30 30h1v1h-1zM3 31h7v1h-7zM11 31h1v1h-1zM15 31h1v1h-1zM18 31h1v1h-1zM20 31h1v1h-1zM25 31h3v1h-3z" fill="#0a1a2f"/></svg>
+          <figcaption>QR code de l’adresse de paiement. Comparez-la à celle affichée par votre portefeuille.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="verifier" aria-labelledby="h-verif">
+    <aside class="rail" aria-label="Vérification">
+      <div class="rl"><span class="rk">Lecture</span><span class="rv">Polygon PoS</span></div>
+      <div class="rl"><span class="rk">Contrôles</span><span class="rv">Statut, token, destinataire, montant</span></div>
+      <div class="rl"><span class="rk">Livraison</span><span class="rv">Lien signé</span></div>
+    </aside>
+    <div class="main">
+      <h2 id="h-verif" style="font-family:var(--serif)">Vérifier mon paiement</h2>
+      <p class="lead" style="margin-top:12px">Après vérification, vous recevez le pack complet (audio, PDF, 5 examens blancs). Le serveur ne retient aucun montant saisi sur cette page&nbsp;: il le lit dans la transaction.</p>
+      <form class="verif" id="verif-form" novalidate>
+        <label for="tx">Hash de la transaction</label>
+        <input id="tx" name="tx" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="0x…" aria-describedby="tx-help">
+        <p class="small" id="tx-help" style="margin:0">66 caractères&nbsp;: <code>0x</code> suivi de 64 caractères hexadécimaux.</p>
+        <div class="actions"><button class="btn" type="submit" id="verif-btn">Vérifier mon paiement</button></div>
+      </form>
+      <div class="resultat" id="resultat" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="h-faq">
+    <aside class="rail" aria-label="Questions fréquentes">
+      <div class="rl"><span class="rk">FAQ</span><span class="rv">3 réponses</span></div>
+    </aside>
+    <div class="main">
+      <h2 id="h-faq" style="font-family:var(--serif)">Questions fréquentes</h2>
+      <div class="faq" style="margin-top:20px">
+        <details open>
+          <summary>Pourquoi 20 USDC et pas 19&nbsp;€&nbsp;?</summary>
+          <p class="fa">Le pack réglé par carte coûte 19&nbsp;€. En USDC sur Polygon, le prix est fixé à 20&nbsp;USDC une fois, sans abonnement&nbsp;; les frais de réseau, prélevés par Polygon au moment de l’envoi, restent à votre charge.</p>
+        </details>
+        <details>
+          <summary>Que se passe-t-il si j’envoie depuis Ethereum ou par un pont&nbsp;?</summary>
+          <p class="fa">La vérification n’interroge que Polygon&nbsp;: un paiement envoyé depuis un autre réseau, ou arrivé par un pont, ne sera pas reconnu automatiquement.</p>
+        </details>
+        <details>
+          <summary>Puis-je payer avec l’USDC bridgé, ou en deux fois&nbsp;?</summary>
+          <p class="fa">Non. Il faut une seule transaction d’au moins 20&nbsp;USDC, avec l’USDC natif de Polygon (contrat 0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359). Un autre token ou deux envois séparés ne sont pas reconnus&nbsp;; écrivez-nous et nous vérifierons à la main.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="offre" aria-labelledby="h-offre">
+    <aside class="rail" aria-label="Commande">
+      <div class="rl"><span class="rk">Prix</span><span class="rv">20 USDC une fois</span></div>
+      <div class="rl"><span class="rk">Livraison</span><span class="rv">Immédiate après vérification</span></div>
+    </aside>
+    <div class="main">
+      <div class="callout on-blue">
+        <div>
+          <h2 id="h-offre" style="font-family:var(--serif)">20&nbsp;USDC, une fois. Sans abonnement.</h2>
+          <p>Après vérification, vous recevez le pack complet&nbsp;: audio, PDF et 5 examens blancs corrigés. Détail du contenu sur <a href="/fr/" style="color:#dfe6ff">la page du pack</a>.</p>
+        </div>
+        <div class="side">
+          <a class="btn" href="/fr/">Voir le pack</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ftr">
+  <div class="ftr-in">
+    <div class="about">
+      <p class="ftr-brand"><a href="/">embrun<span>.store</span></a></p>
+      <p>Packs de préparation à l’examen civique français 2026 et au test civique américain. Fichiers téléchargeables, sans abonnement.</p>
+      <p><a href="mailto:eliework@embrun.store">eliework@embrun.store</a></p>
+    </div>
+    <div>
+      <h2>Pages</h2>
+      <ul>
+        <li><a href="/fr/">Le pack</a></li>
+        <li><a href="/prix/">Prix</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/entrainement.html">Test gratuit</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Informations</h2>
+      <ul>
+        <li><a href="/terms.html">Conditions de vente</a></li>
+        <li><a href="/privacy.html">Confidentialité</a></li>
+      </ul>
+      <p class="small" style="margin-top:10px">Paiement en USDC sur le réseau Polygon, vérifié sur la blockchain.</p>
+    </div>
+  </div>
+  <div class="disclaimer">
+    <p><strong>Embrun est un service privé et indépendant, sans lien avec le ministère de l’Intérieur, France Éducation international ou la CCI Paris Île-de-France.</strong> Le paiement en USDC est un transfert de stablecoin sur la blockchain Polygon&nbsp;; une fois la transaction confirmée, son montant et son destinataire ne peuvent plus être annulés.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var ADRESSE = "0x8dceAAE8788E232bFc5F825B6D6bf696E5b82DfC";
+  var API = "https://openclaw-vm.tail5af44b.ts.net:8443";
+  var MOTIFS = {
+    introuvable: "Transaction introuvable sur Polygon. Si vous venez de payer, patientez quelques secondes puis réessayez.",
+    echec: "La transaction a échoué sur la blockchain : aucun paiement n’a été transféré.",
+    montant: "Aucun transfert d’au moins 20 USDC vers notre portefeuille n’a été trouvé dans cette transaction."
+  };
+
+  /* --- 1. Copier l'adresse ---------------------------------------------------- */
+  var copier = document.getElementById("copier");
+  var etat = document.getElementById("copie-etat");
+
+  function copierTexte(texte) {
+    var ta = document.createElement("textarea");
+    ta.value = texte;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.top = "-1000px";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    if (ok) { return Promise.resolve(); }
+    if (navigator.clipboard && window.isSecureContext) { return navigator.clipboard.writeText(texte); }
+    return Promise.reject(new Error("copie"));
+  }
+
+  copier.addEventListener("click", function () {
+    copierTexte(ADRESSE).then(function () {
+      copier.textContent = "Copié";
+      etat.textContent = "Adresse copiée dans le presse-papiers.";
+      setTimeout(function () { copier.textContent = "Copier"; }, 2000);
+    }, function () {
+      etat.textContent = "Copie impossible ici : sélectionnez l’adresse et copiez-la à la main.";
+    });
+  });
+
+  /* --- 2. Vérifier un paiement ------------------------------------------------- */
+  var form = document.getElementById("verif-form");
+  var champ = document.getElementById("tx");
+  var bouton = document.getElementById("verif-btn");
+  var res = document.getElementById("resultat");
+
+  function vider(classe) {
+    res.className = "resultat " + classe;
+    while (res.firstChild) { res.removeChild(res.firstChild); }
+  }
+
+  function ajouter(tag, texte, classe) {
+    var e = document.createElement(tag);
+    e.textContent = texte;
+    if (classe) { e.className = classe; }
+    res.appendChild(e);
+    return e;
+  }
+
+  function refuser(texte) {
+    vider("ko");
+    ajouter("p", texte);
+  }
+
+  form.addEventListener("submit", function (evenement) {
+    evenement.preventDefault();
+    var tx = champ.value.trim();
+    if (!/^0x[0-9a-fA-F]{64}$/.test(tx)) {
+      champ.setAttribute("aria-invalid", "true");
+      refuser("Ce n’est pas un hash de transaction valide : il faut 0x suivi de 64 caractères (0–9, a–f).");
+      champ.focus();
+      return;
+    }
+    champ.removeAttribute("aria-invalid");
+    bouton.disabled = true;
+    bouton.textContent = "Vérification…";
+    vider("");
+
+    var requete;
+    try {
+      requete = fetch(API + "/verif", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ tx: tx })
+      });
+    } catch (e) {
+      requete = Promise.reject(e);
+    }
+
+    requete.then(function (reponse) {
+      return reponse.json().then(function (donnees) {
+        return { statut: reponse.status, donnees: donnees || {} };
+      }, function () {
+        return { statut: reponse.status, donnees: {} };
+      });
+    }).then(function (out) {
+      var d = out.donnees;
+      if (out.statut === 200 && d.ok === true && typeof d.token === "string" && /^[0-9a-f]{32}$/.test(d.token)) {
+        vider("ok");
+        var montant = (typeof d.montant === "number") ? " : " + d.montant.toFixed(2) + " USDC reçus" : "";
+        ajouter("p", "Paiement vérifié" + montant + ". Après vérification, vous recevez le pack complet (audio, PDF, 5 examens blancs).");
+        var lien = ajouter("a", "Télécharger le pack", "btn");
+        lien.href = API + "/dl?t=" + encodeURIComponent(d.token);
+        ajouter("p", "Gardez ce lien : il reste valable pour ce paiement.", "small");
+      } else {
+        refuser((MOTIFS[d.err] || "Paiement non reconnu pour cette transaction.") +
+          " Vérifiez que l’envoi a bien eu lieu sur Polygon, vers l’adresse affichée en haut de page, pour au moins 20 USDC.");
+      }
+    }, function () {
+      refuser("Le serveur de vérification ne répond pas. Réessayez dans quelques instants.");
+    }).then(function () {
+      bouton.disabled = false;
+      bouton.textContent = "Vérifier mon paiement";
+    });
+  });
+})();
+</script>
+</body>
+</html>
