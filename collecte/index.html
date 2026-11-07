@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Collecte de données web — sites protégés, livraison 24 h | Embrun</title>
+<meta name="description" content="On récupère les données des sites qui vous bloquent : annonces, catalogues, offres d'emploi. Essai gratuit sur 20 lignes, fichier propre livré en 24 h ouvrées. Payé seulement si livré.">
+<link rel="canonical" href="https://embrun.store/collecte/">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Vos données sont derrière un mur. On passe.">
+<meta property="og:description" content="Extraction de données depuis des sites protégés, livrée en CSV ou JSON sous 24 h ouvrées. Essai gratuit, paiement à la livraison.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://embrun.store/collecte/">
+<style>
+:root{--ink:#14110f;--paper:#fbf9f4;--line:#e2ddd2;--flame:#ff4a1c;--soft:#6b6459;--ok:#1e8a4c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header{border-bottom:1.5px solid var(--ink);position:sticky;top:0;background:var(--paper);z-index:5}
+.top{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:860px;margin:0 auto}
+.brand{font-family:Georgia,serif;font-weight:700;font-size:20px;letter-spacing:-.4px;text-decoration:none;color:var(--ink)}
+.brand span{color:var(--flame)}
+nav a{color:var(--soft);text-decoration:none;font-size:13px;margin-left:16px}
+nav a:hover{color:var(--ink)}
+.hero{padding:52px 0 40px;border-bottom:1.5px solid var(--ink)}
+.kicker{font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--soft);margin-bottom:14px}
+h1{font-family:Georgia,serif;font-size:44px;line-height:1.03;letter-spacing:-1.6px;max-width:15ch}
+h1 em{font-style:normal;color:var(--flame)}
+.lead{margin-top:18px;font-size:18px;color:#2a2620;max-width:56ch}
+.cta{display:inline-block;margin-top:26px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:8px;border:1.5px solid var(--ink)}
+.cta:hover{background:var(--flame);border-color:var(--flame)}
+.cta.alt{background:none;color:var(--ink);margin-left:10px}
+.cta.alt:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+section{padding:44px 0;border-bottom:1px solid var(--line)}
+h2{font-family:Georgia,serif;font-size:27px;letter-spacing:-.8px;margin-bottom:8px}
+.sub{color:var(--soft);font-size:14.5px;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.card{border:1.5px solid var(--ink);border-radius:10px;padding:16px;background:#fff}
+.card h3{font-size:15px;margin-bottom:6px}
+.card p{font-size:13.5px;color:var(--soft);line-height:1.5}
+.steps{counter-reset:s;display:grid;gap:14px}
+.step{display:flex;gap:14px;align-items:flex-start}
+.num{width:30px;height:30px;flex:none;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;font-weight:800;font-size:14px}
+.step h3{font-size:15px;margin-bottom:3px}
+.step p{font-size:14px;color:var(--soft)}
+.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.price{border:1.5px solid var(--line);border-radius:12px;padding:18px;background:#fff}
+.price.best{border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.price .tag{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--flame);font-weight:800}
+.price .amt{font-family:Georgia,serif;font-size:36px;letter-spacing:-1.5px;margin:6px 0 2px}
+.price ul{list-style:none;margin-top:12px;font-size:13.5px;color:var(--soft)}
+.price li{padding-left:16px;position:relative;margin-bottom:6px}
+.price li::before{content:"→";position:absolute;left:0;color:var(--flame)}
+form{margin-top:10px;display:grid;gap:12px;max-width:560px}
+label{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--soft)}
+input,textarea{width:100%;padding:11px 12px;border:1.5px solid var(--ink);border-radius:8px;font:inherit;background:#fff}
+input:focus,textarea:focus{outline:2px solid var(--flame);outline-offset:1px}
+.row{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+button{background:var(--ink);color:#fff;border:1.5px solid var(--ink);border-radius:8px;padding:13px;font:inherit;font-weight:800;cursor:pointer}
+button:hover{background:var(--flame);border-color:var(--flame)}
+.note{font-size:12.5px;color:var(--soft)}
+#msg{margin-top:14px;padding:12px;border-radius:8px;font-size:14px;display:none}
+#msg.ok{display:block;background:#eaf7ee;border:1px solid var(--ok);color:#14532d}
+#msg.ko{display:block;background:#fff1ea;border:1px solid var(--flame);color:#7a2408}
+.dont{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:8px}
+.dont div{font-size:14px;padding:12px;border:1.5px dashed var(--line);border-radius:8px;color:#3a342c}
+footer{padding:34px 0 60px;font-size:13px;color:var(--soft)}
+footer a{color:var(--ink)}
+@media(max-width:560px){h1{font-size:34px}.row{grid-template-columns:1fr}.cta.alt{margin:10px 0 0;display:inline-block}}
+</style>
+</head>
+<body>
+<header><div class="top">
+  <a class="brand" href="/">Embrun<span>.</span></a>
+  <nav><a href="/prix/">Tarifs</a><a href="/">Accueil</a><a href="mailto:contact@embrun.store">Contact</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="kicker">Collecte de données · France</div>
+    <h1>Vos données sont derrière un mur. <em>On passe.</em></h1>
+    <p class="lead">Annonces, catalogues, offres d'emploi, annuaires : on récupère ce que votre navigateur ne peut plus ouvrir, et on vous livre un fichier propre — CSV ou JSON — sous 24 h ouvrées.</p>
+    <a class="cta" href="#demande">Tester gratuitement sur 20 lignes</a>
+    <a class="cta alt" href="#tarifs">Voir les tarifs</a>
+  </div>
+
+  <section>
+    <h2>Ce qu'on récupère</h2>
+    <p class="sub">Des données publiques, structurées, prêtes à être analysées. Pas de comptes, pas de données personnelles.</p>
+    <div class="grid">
+      <div class="card"><h3>Annonces et places de marché</h3><p>Prix, descriptions, photos, localisation, date de publication — pour suivre un marché au lieu de l'échantillonner.</p></div>
+      <div class="card"><h3>Catalogues produits</h3><p>Références, tarifs, disponibilité, variantes. Utile pour la veille concurrentielle ou la comparaison de prix.</p></div>
+      <div class="card"><h3>Offres d'emploi</h3><p>Intitulés, entreprises, lieux, salaires quand ils sont publiés. Pour cartographier un secteur ou alimenter un job board.</p></div>
+      <div class="card"><h3>Annuaires professionnels</h3><p>Raison sociale, activité, adresse publique. Le socle d'une base de prospection B2B honnête.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Comment ça marche</h2>
+    <p class="sub">Trois étapes, aucune surprise.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div><h3>Vous décrivez</h3><p>Une URL, les champs qui vous intéressent, et le volume approximatif. Deux minutes, pas de réunion.</p></div></div>
+      <div class="step"><div class="num">2</div><div><h3>On teste gratuitement</h3><p>Vingt lignes réelles, extraites et livrées. Vous vérifiez la qualité avant de parler d'argent.</p></div></div>
+      <div class="step"><div class="num">3</div><div><h3>Vous recevez</h3><p>Devis fixe accepté, fichier livré sous 24 h ouvrées, et relance planifiée si vous voulez un suivi quotidien.</p></div></div>
+    </div>
+  </section>
+
+  <section id="tarifs">
+    <h2>Tarifs</h2>
+    <p class="sub">Prix fermes. <strong>Si on ne livre rien, vous ne payez rien.</strong></p>
+    <div class="prices">
+      <div class="price"><div class="tag">Essai</div><div class="amt">0 €</div><p class="note">20 lignes, pour vérifier la qualité.</div>
+      <ul><li>1 URL</li><li>Champs au choix</li><li>Livraison 48 h</li></ul></div>
+      <div class="price best"><div class="tag">Standard</div><div class="amt">49 €</div><p class="note">Le cas courant.</p>
+      <ul><li>Jusqu'à 2 000 lignes</li><li>1 site</li><li>Livraison 24 h ouvrées</li><li>1 passe de correction incluse</li></ul></div>
+      <div class="price"><div class="tag">Volume</div><div class="amt">149 €</div><p class="note">Pour un suivi continu.</p>
+      <ul><li>Jusqu'à 20 000 lignes</li><li>3 sites</li><li>Livraison 24 h ouvrées</li><li>Relance programmée possible</li></ul></div>
+    </div>
+  </section>
+
+  <section id="demande">
+    <h2>Demander l'essai gratuit</h2>
+    <p class="sub">Vingt lignes réelles sous 48 h. Pas de carte bancaire, pas d'engagement.</p>
+    <form id="f" novalidate>
+      <div class="row">
+        <div><label for="url">URL du site</label><input id="url" name="url" type="url" placeholder="https://…" required aria-describedby="urlh"></div>
+        <div><label for="email">Votre email</label><input id="email" name="email" type="email" placeholder="vous@exemple.fr" required></div>
+      </div>
+      <div><label for="champs">Quels champs vous intéressent ?</label><textarea id="champs" name="champs" rows="3" placeholder="Exemple : titre, prix, date, ville, lien de l'annonce"></textarea></div>
+      <button type="submit">Envoyer la demande</button>
+      <p class="note" id="urlh">On répond à l'adresse indiquée, sous 24 h ouvrées. Aucune donnée transmise à des tiers.</p>
+      <div id="msg"></div>
+    </form>
+  </section>
+
+  <section>
+    <h2>Ce qu'on ne fait pas</h2>
+    <p class="sub">Un engagement écrit, pas un slogan.</p>
+    <div class="dont">
+      <div>Pas de comptes piratés ni de connexion à votre place.</div>
+      <div>Pas de collecte de données personnelles.</div>
+      <div>Pas de revente de listes à des tiers.</div>
+      <div>Pas de données privées ni de contenu derrière un paywall.</div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Embrun</strong> — collecte de données web. Contact : <a href="mailto:contact@embrun.store">contact@embrun.store</a></p>
+    <p style="margin-top:6px"><a href="/prix/">Tarifs</a> · <a href="/">Accueil</a> · Les données livrées restent publiques ; la responsabilité de leur usage vous revient.</p>
+  </footer>
+</div>
+
+<script>
+document.getElementById('f').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var m = document.getElementById('msg');
+  var url = document.getElementById('url').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var champs = document.getElementById('champs').value.trim();
+  if(!url || !/^https?:\/\//i.test(url)){ m.className='ko'; m.textContent='Indiquez une URL complète, commençant par https://'; return; }
+  if(!email || email.indexOf('@')<1){ m.className='ko'; m.textContent='Indiquez une adresse email valide.'; return; }
+  m.className=''; m.textContent='';
+  try{
+    var r = await fetch('https://openclaw-vm.tail5af44b.ts.net:8443/lead', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({email:email, source:'collecte', note:url+' | '+champs})
+    });
+    if(r.ok){ m.className='ok'; m.textContent='Demande reçue. On vous répond à '+email+' sous 24 h ouvrées.'; this.reset(); }
+    else { m.className='ko'; m.textContent='Envoi impossible pour le moment. Écrivez-nous à contact@embrun.store.'; }
+  }catch(err){
+    m.className='ko'; m.textContent='Envoi impossible pour le moment. Écrivez-nous à contact@embrun.store.';
+  }
+});
+</script>
+</body>
+</html>
