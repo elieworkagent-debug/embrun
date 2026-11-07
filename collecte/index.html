@@ -175,7 +175,7 @@ document.getElementById('f').addEventListener('submit', async function(e){
 });
 </script>
 <script>
-(function(){try{navigator.sendBeacon('https://openclaw-vm.tail5af44b.ts.net:8443/hit','collecte');}catch(e){}})();
+(function(){try{var b=new Blob([JSON.stringify({s:'collecte'})],{type:'application/json'});navigator.sendBeacon('https://openclaw-vm.tail5af44b.ts.net:8443/hit',b);}catch(e){}})();
 </script>
 </body>
 </html>
