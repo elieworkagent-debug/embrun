@@ -483,6 +483,7 @@
         <div class="side">
           <a class="btn" href="https://www.creem.io/product/prod_56meS0QP6mZUhJTlR3icrG">Télécharger le pack <span class="amt">19&nbsp;€</span></a>
           <span class="reassure">Paiement par carte bancaire, traité par Creem. Livraison numérique immédiate.</span>
+          <span class="reassure" style="margin-top:6px">Sans carte bancaire&nbsp;? <a class="btnlink" href="/payer/">Payer 20&nbsp;USDC sur Polygon</a></span>
         </div>
       </div>
 <div class="paylogos" role="group" aria-label="Moyens de paiement acceptés">
@@ -495,6 +496,22 @@
     </div>
   </section>
 
+  <section class="sec" id="alerte" aria-labelledby="h-alerte">
+    <aside class="rail" aria-label="Alerte email">
+      <div class="rl"><span class="rk">Email</span><span class="rv">1 message<br>par mise à jour</span></div>
+    </aside>
+    <div class="main">
+      <h2 id="h-alerte">Un email quand le pack change, rien d’autre</h2>
+      <p class="lead" style="margin-top:12px">Aucun compte à créer&nbsp;: le test gratuit et l’achat fonctionnent déjà sans inscription. Laissez seulement votre adresse si vous voulez savoir quand un nouvel examen blanc sort ou quand le prix change.</p>
+      <form id="alerte-form" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;max-width:520px">
+        <input id="alerte-email" type="email" required autocomplete="email" placeholder="vous@exemple.fr" aria-label="Adresse email"
+               style="flex:1 1 240px;padding:12px 14px;border:1px solid #c9d2de;border-radius:8px;font:inherit;background:#fff;color:#0a1a2f">
+        <button class="btn" type="submit">Me prévenir</button>
+      </form>
+      <p id="alerte-ok" class="small" hidden style="margin-top:10px;color:#0a7a3d">C’est noté. Vous ne recevrez que les mises à jour du pack.</p>
+      <p class="small" style="margin-top:8px">Adresse utilisée uniquement pour ces messages, jamais revendue. Répondez «&nbsp;stop&nbsp;» à n’importe quel message pour ne plus rien recevoir.</p>
+    </div>
+  </section>
   <section class="sec" id="faq" aria-labelledby="h-faq">
     <aside class="rail" aria-label="Questions fréquentes">
       <div class="rl"><span class="rk">FAQ</span><span class="rv">9 réponses</span></div>
@@ -661,5 +678,6 @@
 })();
 </script>
 <script>addEventListener("load",function(){try{var U="https://openclaw-vm.tail5af44b.ts.net:8443/hit",K="embrun_src",st={},q=new URLSearchParams(location.search),g=function(n){var v=q.get(n);return v&&v.trim()?v.trim().slice(0,80):""};try{st=JSON.parse(localStorage.getItem(K)||"{}")||{}}catch(x){st={}}if(typeof st!=="object"||!st)st={};var s=g("utm_source"),m=g("utm_medium"),c=g("utm_campaign");if(s){st={s:s,m:m,c:c};try{localStorage.setItem(K,JSON.stringify(st))}catch(x){}}s=st.s||"";m=st.m||"";c=st.c||"";var d=JSON.stringify({p:location.pathname,r:document.referrer,w:screen.width,s:s,m:m,c:c});var b=function(){try{var x=new XMLHttpRequest();x.open("POST",U,true);x.setRequestHeader("Content-Type","text/plain;charset=UTF-8");x.send(d)}catch(x){navigator.sendBeacon&&navigator.sendBeacon(U,d)}};if(navigator.sendBeacon){var ok=false;try{ok=navigator.sendBeacon(U,new Blob([d],{type:"text/plain;charset=UTF-8"}))}catch(x){}if(!ok)b()}else b();}catch(e){}});</script>
+<script>(function(){var f=document.getElementById("alerte-form");if(!f)return;f.addEventListener("submit",function(e){e.preventDefault();var i=document.getElementById("alerte-email"),v=(i.value||"").trim(),ok=document.getElementById("alerte-ok");if(!v)return;try{fetch("https://openclaw-vm.tail5af44b.ts.net:8443/lead",{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=UTF-8"},body:JSON.stringify({email:v,s:"page-fr-offre"})})}catch(x){}f.hidden=true;if(ok)ok.hidden=false;})})();</script>
 </body>
 </html>
